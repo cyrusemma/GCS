@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { Eye, EyeOff, ClipboardList, CreditCard, Bell, ArrowRight } from "lucide-react"
+import SEO from "../components/ui/SEO"
 import { ASSETS, onImgError } from "../data/images"
 
 const roles = ["Student", "Parent", "Staff"]
@@ -17,9 +18,15 @@ export default function Portal() {
   }
 
   return (
-    <section className="pt-16 bg-crown-white min-h-screen">
+    <>
+      <SEO
+        title="Portal"
+        path="/portal"
+        description="Student & Parent Portal for Golden Crown School — check results, pay fees, and view school notifications."
+      />
+      <section className="pt-16 bg-crown-white dark:bg-slate-900 min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden shadow-xl bg-white">
+        <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden shadow-xl bg-white dark:bg-slate-800">
           {/* Left panel */}
           <div className="bg-crown-blue text-white p-8 lg:p-12 flex flex-col justify-center">
             <img
@@ -45,7 +52,7 @@ export default function Portal() {
                   key={r}
                   onClick={() => setRole(r)}
                   className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                    role === r ? "bg-crown-blue text-white" : "bg-crown-white text-crown-blue hover:bg-crown-gold/20"
+                    role === r ? "bg-crown-blue text-white" : "bg-crown-white dark:bg-slate-900 text-crown-blue dark:text-crown-gold-light hover:bg-crown-gold/20"
                   }`}
                 >
                   {r}
@@ -61,7 +68,7 @@ export default function Portal() {
 
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-700 dark:text-slate-300">
                   {role === "Parent" ? "Email / Parent ID" : role === "Staff" ? "Staff Email" : "Student ID / Email"}
                 </label>
                 <input
@@ -72,7 +79,7 @@ export default function Portal() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Password</label>
+                <label className="text-sm font-medium text-gray-700 dark:text-slate-300">Password</label>
                 <div className="mt-1 relative">
                   <input
                     type={showPw ? "text" : "password"}
@@ -92,10 +99,10 @@ export default function Portal() {
               </div>
 
               <div className="flex items-center justify-between text-sm">
-                <label className="flex items-center gap-2 text-gray-600">
+                <label className="flex items-center gap-2 text-gray-600 dark:text-slate-300">
                   <input type="checkbox" /> Remember me
                 </label>
-                <a href="#" className="text-crown-blue hover:text-crown-gold">Forgot Password?</a>
+                <a href="#" className="text-crown-blue dark:text-crown-gold-light hover:text-crown-gold">Forgot Password?</a>
               </div>
 
               <button
@@ -105,9 +112,9 @@ export default function Portal() {
                 Login
               </button>
 
-              <p className="text-center text-sm text-gray-600">
+              <p className="text-center text-sm text-gray-600 dark:text-slate-300">
                 New student?{" "}
-                <Link to="/admissions" className="text-crown-blue font-medium hover:text-crown-gold inline-flex items-center gap-1">
+                <Link to="/admissions" className="text-crown-blue dark:text-crown-gold-light font-medium hover:text-crown-gold inline-flex items-center gap-1">
                   Apply here <ArrowRight size={14} />
                 </Link>
               </p>
@@ -128,17 +135,18 @@ export default function Portal() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm text-center"
+              className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-100 dark:border-slate-700 shadow-sm text-center"
             >
               <div className="mx-auto mb-4 h-14 w-14 rounded-full bg-crown-gold/20 flex items-center justify-center">
-                <Icon className="text-crown-blue" size={26} />
+                <Icon className="text-crown-blue dark:text-crown-gold-light" size={26} />
               </div>
-              <h3 className="font-poppins font-semibold text-crown-blue mb-1">{title}</h3>
-              <p className="text-sm text-gray-600">{text}</p>
+              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-1">{title}</h3>
+              <p className="text-sm text-gray-600 dark:text-slate-300">{text}</p>
             </motion.div>
           ))}
         </div>
       </div>
-    </section>
+      </section>
+    </>
   )
 }

@@ -6,6 +6,9 @@ import Navbar from "./components/layout/Navbar"
 import Footer from "./components/layout/Footer"
 import PageWrapper from "./components/layout/PageWrapper"
 import WhatsAppButton from "./components/ui/WhatsAppButton"
+import Preloader from "./components/ui/Preloader"
+import RouteCurtain from "./components/ui/RouteCurtain"
+import CustomCursor from "./components/ui/CustomCursor"
 
 import Home from "./pages/Home"
 import About from "./pages/About"
@@ -38,7 +41,10 @@ export default function App() {
   const location = useLocation()
 
   return (
-    <div className="font-poppins flex flex-col min-h-screen">
+    <div className="font-poppins flex flex-col min-h-screen bg-crown-white dark:bg-[#0a1124] transition-colors">
+      <Preloader />
+      <CustomCursor />
+      <RouteCurtain />
       <ScrollToTop />
       <Navbar />
       <div className="flex-1">

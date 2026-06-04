@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import PageBanner from "../components/ui/PageBanner"
 import GalleryCard from "../components/ui/GalleryCard"
+import SEO from "../components/ui/SEO"
 import { IMAGES, onImgError } from "../data/images"
 
 const photos = [
@@ -33,13 +34,18 @@ export default function Gallery() {
 
   return (
     <>
+      <SEO
+        title="Gallery"
+        path="/gallery"
+        description="Photos of campus life, classrooms, sports, events, and graduation at Golden Crown School, Lashibi."
+      />
       <PageBanner
         title="Gallery"
         subtitle="Moments of learning, play, and celebration at Golden Crown School."
         breadcrumb="Gallery"
       />
 
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filter tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -50,7 +56,7 @@ export default function Gallery() {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   filter === f
                     ? "bg-crown-blue text-white"
-                    : "bg-crown-white text-crown-blue hover:bg-crown-gold/20"
+                    : "bg-crown-white dark:bg-slate-900 text-crown-blue dark:text-crown-gold-light hover:bg-crown-gold/20"
                 }`}
               >
                 {f}

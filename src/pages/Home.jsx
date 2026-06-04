@@ -1,3 +1,4 @@
+import SEO from "../components/ui/SEO"
 import Hero from "../components/home/Hero"
 import WelcomeSection from "../components/home/WelcomeSection"
 import WhyChooseUs from "../components/home/WhyChooseUs"
@@ -11,6 +12,7 @@ import AdmissionCTA from "../components/home/AdmissionCTA"
 export default function Home() {
   return (
     <>
+      <SEO path="/" />
       <Hero />
       <WelcomeSection />
       <WhyChooseUs />

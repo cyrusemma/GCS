@@ -12,6 +12,26 @@ body {
   background-color: #F5F7FA;
   color: #1f2937;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode base */
+html.dark body {
+  background-color: #0a1124;
+  color: #e2e8f0;
+}
+
+/* Hide the native cursor when the custom cursor is active (desktop only) */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor select,
+  body.has-custom-cursor label {
+    cursor: none;
+  }
 }
 
 /* Custom scrollbar */
@@ -20,6 +40,9 @@ body {
 }
 ::-webkit-scrollbar-track {
   background: #F5F7FA;
+}
+html.dark ::-webkit-scrollbar-track {
+  background: #0a1124;
 }
 ::-webkit-scrollbar-thumb {
   background: #0D47A1;
@@ -65,4 +88,54 @@ body {
 .masonry > * {
   break-inside: avoid;
   margin-bottom: 1rem;
+}
+
+/* Animated gold underline for links */
+.gold-underline {
+  position: relative;
+}
+.gold-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background-color: #D4AF37;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+.gold-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Dark-mode form controls (applies site-wide without touching each input) */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #94a3b8;
+}
+html.dark option {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

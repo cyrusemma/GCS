@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form"
 import { MapPin, Phone, Mail, Clock, CheckCircle2, AlertCircle } from "lucide-react"
 import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
+import SEO from "../components/ui/SEO"
+import { sendEmail } from "../lib/email"
+import { useToast } from "../context/ToastContext"
 
 const inputClass =
   "w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-crown-blue/40 focus:border-crown-blue"
@@ -16,17 +19,40 @@ const infoCards = [
 export default function Contact() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
   const [status, setStatus] = useState(null) // 'success' | 'error'
+  const [submitting, setSubmitting] = useState(false)
+  const { toast } = useToast()
 
-  const onSubmit = () => {
-    // No backend — simulate a successful send.
-    setStatus("success")
-    reset()
-    setTimeout(() => setStatus(null), 6000)
+  const onSubmit = async (data) => {
+    setSubmitting(true)
+    try {
+      await sendEmail("contact", {
+        form_type: "Contact Message",
+        name: data.name,
+        email: data.email,
+        phone: data.phone || "—",
+        subject: data.subject,
+        message: data.message,
+      })
+      setStatus("success")
+      reset()
+      toast({ type: "success", title: "Message sent!", message: "We'll reply within 24 hours." })
+      setTimeout(() => setStatus(null), 6000)
+    } catch (err) {
+      setStatus("error")
+      toast({ type: "error", title: "Couldn't send", message: "Please try again or call the office." })
+    } finally {
+      setSubmitting(false)
+    }
   }
   const onError = () => setStatus("error")
 
   return (
     <>
+      <SEO
+        title="Contact Us"
+        path="/contact"
+        description="Contact Golden Crown School, Lashibi — call +233 55 555 3729, email info@goldencrownschool.edu.gh, or send a message. Office hours Mon–Fri 7am–5pm."
+      />
       <PageBanner
         title="Contact Us"
         subtitle="We'd love to hear from you. Reach out any time."
@@ -34,19 +60,19 @@ export default function Contact() {
       />
 
       {/* Info cards */}
-      <section className="py-16 lg:py-20 bg-white">
+      <section className="py-16 lg:py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-6">
             {infoCards.map(({ Icon, title, text, href }) => (
-              <div key={title} className="bg-crown-white rounded-xl p-6 text-center border border-gray-100">
+              <div key={title} className="bg-crown-white dark:bg-slate-900 rounded-xl p-6 text-center border border-gray-100 dark:border-slate-700">
                 <div className="mx-auto mb-4 h-14 w-14 rounded-full bg-crown-blue text-white flex items-center justify-center">
                   <Icon size={24} />
                 </div>
-                <h3 className="font-poppins font-semibold text-crown-blue mb-1">{title}</h3>
+                <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-1">{title}</h3>
                 {href ? (
-                  <a href={href} className="text-sm text-gray-600 hover:text-crown-blue break-words">{text}</a>
+                  <a href={href} className="text-sm text-gray-600 dark:text-slate-300 hover:text-crown-blue break-words">{text}</a>
                 ) : (
-                  <p className="text-sm text-gray-600">{text}</p>
+                  <p className="text-sm text-gray-600 dark:text-slate-300">{text}</p>
                 )}
               </div>
             ))}
@@ -66,7 +92,7 @@ export default function Contact() {
       </section>
 
       {/* Map + form */}
-      <section className="py-16 lg:py-24 bg-crown-white border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
           {/* Map */}
           <div>
@@ -102,16 +128,16 @@ export default function Contact() {
 
             <form
               onSubmit={handleSubmit(onSubmit, onError)}
-              className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-4"
+              className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 p-6 space-y-4"
             >
               <div>
-                <label className="text-sm font-medium text-gray-700">Name <span className="text-red-500">*</span></label>
+                <label className="text-sm font-medium text-gray-700 dark:text-slate-300">Name <span className="text-red-500">*</span></label>
                 <input className={`mt-1 ${inputClass}`} {...register("name", { required: "Your name is required" })} />
                 {errors.name && <span className="text-xs text-red-500">{errors.name.message}</span>}
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Email <span className="text-red-500">*</span></label>
+                  <label className="text-sm font-medium text-gray-700 dark:text-slate-300">Email <span className="text-red-500">*</span></label>
                   <input
                     type="email"
                     className={`mt-1 ${inputClass}`}
@@ -123,12 +149,12 @@ export default function Contact() {
                   {errors.email && <span className="text-xs text-red-500">{errors.email.message}</span>}
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Phone</label>
+                  <label className="text-sm font-medium text-gray-700 dark:text-slate-300">Phone</label>
                   <input className={`mt-1 ${inputClass}`} {...register("phone")} />
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Subject</label>
+                <label className="text-sm font-medium text-gray-700 dark:text-slate-300">Subject</label>
                 <select className={`mt-1 ${inputClass}`} defaultValue="General Inquiry" {...register("subject")}>
                   {["General Inquiry", "Admissions", "Fees", "Complaint", "Other"].map((s) => (
                     <option key={s} value={s}>{s}</option>
@@ -136,7 +162,7 @@ export default function Contact() {
                 </select>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">Message <span className="text-red-500">*</span></label>
+                <label className="text-sm font-medium text-gray-700 dark:text-slate-300">Message <span className="text-red-500">*</span></label>
                 <textarea
                   rows={5}
                   className={`mt-1 ${inputClass}`}
@@ -149,9 +175,10 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="w-full bg-crown-gold hover:bg-crown-gold-light text-crown-blue-dark font-semibold py-3 rounded-full transition-colors"
+                disabled={submitting}
+                className="w-full bg-crown-gold hover:bg-crown-gold-light text-crown-blue-dark font-semibold py-3 rounded-full transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Send Message
+                {submitting ? "Sending…" : "Send Message"}
               </button>
             </form>
           </div>

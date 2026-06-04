@@ -6,6 +6,7 @@ import {
 import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
 import StaffCard from "../components/ui/StaffCard"
+import SEO from "../components/ui/SEO"
 import { IMAGES, onImgError } from "../data/images"
 import { leadership } from "../data/staff"
 
@@ -39,6 +40,11 @@ const facilities = [
 export default function About() {
   return (
     <>
+      <SEO
+        title="About Us"
+        path="/about"
+        description="Learn about Golden Crown School, Lashibi — established 2004. Our history, mission, vision, values, facilities, and leadership team."
+      />
       <PageBanner
         title="About Our School"
         subtitle="A legacy of Hardwork and Integrity since 2004."
@@ -46,7 +52,7 @@ export default function About() {
       />
 
       {/* History timeline */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title="Our Journey"
@@ -67,9 +73,9 @@ export default function About() {
                   }`}
                 >
                   <div className={`${i % 2 === 0 ? "sm:text-right sm:pr-8" : "sm:pl-8 sm:col-start-2"}`}>
-                    <div className="bg-crown-white rounded-xl p-5 border border-gray-100 shadow-sm">
+                    <div className="bg-crown-white dark:bg-slate-900 rounded-xl p-5 border border-gray-100 dark:border-slate-700 shadow-sm">
                       <span className="font-poppins font-bold text-crown-gold text-xl">{m.year}</span>
-                      <p className="text-gray-600 text-sm mt-1">{m.text}</p>
+                      <p className="text-gray-600 dark:text-slate-300 text-sm mt-1">{m.text}</p>
                     </div>
                   </div>
                   <span className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-5 h-4 w-4 rounded-full bg-crown-blue border-4 border-white shadow" />
@@ -81,7 +87,7 @@ export default function About() {
       </section>
 
       {/* Mission Vision Values */}
-      <section className="py-16 lg:py-24 bg-crown-white border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Mission, Vision & Values" />
           <div className="grid md:grid-cols-3 gap-6">
@@ -102,12 +108,12 @@ export default function About() {
                 excellence, strong character formation, and a nurturing learning community.
               </p>
             </div>
-            <div className="bg-white border-2 border-crown-blue rounded-xl p-7">
-              <Heart className="text-crown-blue mb-4" size={34} />
-              <h3 className="font-poppins font-semibold text-xl text-crown-blue mb-3">Our Values</h3>
+            <div className="bg-white dark:bg-slate-800 border-2 border-crown-blue rounded-xl p-7">
+              <Heart className="text-crown-blue dark:text-crown-gold-light mb-4" size={34} />
+              <h3 className="font-poppins font-semibold text-xl text-crown-blue dark:text-crown-gold-light mb-3">Our Values</h3>
               <ul className="space-y-2">
                 {values.map(({ Icon, label }) => (
-                  <li key={label} className="flex items-center gap-2 text-gray-700 text-sm">
+                  <li key={label} className="flex items-center gap-2 text-gray-700 dark:text-slate-300 text-sm">
                     <Icon size={18} className="text-crown-gold" /> {label}
                   </li>
                 ))}
@@ -118,7 +124,7 @@ export default function About() {
       </section>
 
       {/* Headteacher's message */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-5 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -143,10 +149,10 @@ export default function About() {
             className="lg:col-span-3"
           >
             <span className="inline-block h-1 w-12 rounded-full bg-crown-gold mb-4" />
-            <h2 className="font-poppins font-bold text-3xl text-crown-blue mb-4">
+            <h2 className="font-poppins font-bold text-3xl text-crown-blue dark:text-crown-gold-light mb-4">
               Headteacher's Message
             </h2>
-            <div className="border-l-4 border-crown-gold pl-5 space-y-3 text-gray-600 leading-relaxed">
+            <div className="border-l-4 border-crown-gold pl-5 space-y-3 text-gray-600 dark:text-slate-300 leading-relaxed">
               <p>
                 "Welcome to Golden Crown School. For over twenty years, we have been privileged to
                 walk alongside families in Lashibi and beyond, helping their children grow into
@@ -158,14 +164,14 @@ export default function About() {
                 and see the difference that genuine care and committed teaching can make."
               </p>
             </div>
-            <p className="mt-5 font-poppins font-semibold text-crown-blue">Mr. Emmanuel Asante</p>
+            <p className="mt-5 font-poppins font-semibold text-crown-blue dark:text-crown-gold-light">Mr. Emmanuel Asante</p>
             <p className="text-sm text-crown-gold">Headteacher</p>
           </motion.div>
         </div>
       </section>
 
       {/* Facilities */}
-      <section className="py-16 lg:py-24 bg-crown-white border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title="Our Facilities"
@@ -173,13 +179,13 @@ export default function About() {
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {facilities.map(({ Icon, label, text }) => (
-              <div key={label} className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm flex gap-4">
+              <div key={label} className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-100 dark:border-slate-700 shadow-sm flex gap-4">
                 <div className="h-12 w-12 shrink-0 rounded-full bg-crown-gold/20 flex items-center justify-center">
-                  <Icon className="text-crown-blue" size={24} />
+                  <Icon className="text-crown-blue dark:text-crown-gold-light" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-poppins font-semibold text-crown-blue">{label}</h3>
-                  <p className="text-sm text-gray-600 mt-1">{text}</p>
+                  <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light">{label}</h3>
+                  <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">{text}</p>
                 </div>
               </div>
             ))}
@@ -188,7 +194,7 @@ export default function About() {
       </section>
 
       {/* Leadership team */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title="Our Leadership Team"
@@ -219,12 +225,12 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="shrink-0 w-72 bg-white rounded-xl p-6 shadow-lg"
+                className="shrink-0 w-72 bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg"
               >
                 <Trophy className="text-crown-gold mb-3" size={30} />
                 <span className="text-xs font-semibold text-crown-gold">{a.year}</span>
-                <h3 className="font-poppins font-semibold text-crown-blue mt-1">{a.title}</h3>
-                <p className="text-sm text-gray-600 mt-2">{a.text}</p>
+                <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mt-1">{a.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-slate-300 mt-2">{a.text}</p>
               </motion.div>
             ))}
           </div>

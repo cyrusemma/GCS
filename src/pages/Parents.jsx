@@ -4,6 +4,7 @@ import {
 } from "lucide-react"
 import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
+import SEO from "../components/ui/SEO"
 
 const downloads = [
   "Prospectus 2024/2025",
@@ -23,6 +24,11 @@ const resources = [
 export default function Parents() {
   return (
     <>
+      <SEO
+        title="For Parents"
+        path="/parents"
+        description="Parent portal, fee payment information, PTA, downloads, and resources for Golden Crown School families."
+      />
       <PageBanner
         title="For Parents"
         subtitle="Everything you need to support your child's journey with us."
@@ -30,7 +36,7 @@ export default function Parents() {
       />
 
       {/* Portal CTA + handbook */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-6">
           <div className="bg-crown-blue text-white rounded-2xl p-8 flex flex-col">
             <LogIn className="text-crown-gold mb-4" size={36} />
@@ -47,9 +53,9 @@ export default function Parents() {
             </Link>
           </div>
           <div className="bg-crown-gold/10 border border-crown-gold/40 rounded-2xl p-8 flex flex-col">
-            <FileText className="text-crown-blue mb-4" size={36} />
-            <h3 className="font-poppins font-bold text-2xl text-crown-blue mb-2">Student Handbook</h3>
-            <p className="text-gray-600 text-sm mb-6 flex-1">
+            <FileText className="text-crown-blue dark:text-crown-gold-light mb-4" size={36} />
+            <h3 className="font-poppins font-bold text-2xl text-crown-blue dark:text-crown-gold-light mb-2">Student Handbook</h3>
+            <p className="text-gray-600 dark:text-slate-300 text-sm mb-6 flex-1">
               Our handbook covers school rules, the code of conduct, uniform policy, and everything
               parents and pupils need to know.
             </p>
@@ -65,7 +71,7 @@ export default function Parents() {
       </section>
 
       {/* Fee payment + PTA */}
-      <section className="py-16 lg:py-24 bg-crown-white border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10">
           <div>
             <SectionTitle title="Fee Payment" center={false} />
@@ -75,32 +81,32 @@ export default function Parents() {
                 { Icon: Building2, title: "Bank Transfer", text: "Direct bank transfer or deposit. Contact the school office for current account details." },
                 { Icon: Users, title: "In Person", text: "Pay at the school accounts office during office hours and collect an official receipt." },
               ].map(({ Icon, title, text }) => (
-                <div key={title} className="flex gap-4 bg-white rounded-xl p-5 border border-gray-100">
+                <div key={title} className="flex gap-4 bg-white dark:bg-slate-800 rounded-xl p-5 border border-gray-100 dark:border-slate-700">
                   <div className="h-11 w-11 shrink-0 rounded-full bg-crown-gold/20 flex items-center justify-center">
-                    <Icon className="text-crown-blue" size={22} />
+                    <Icon className="text-crown-blue dark:text-crown-gold-light" size={22} />
                   </div>
                   <div>
-                    <h4 className="font-poppins font-semibold text-crown-blue">{title}</h4>
-                    <p className="text-sm text-gray-600 mt-1">{text}</p>
+                    <h4 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light">{title}</h4>
+                    <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">{text}</p>
                   </div>
                 </div>
               ))}
-              <p className="text-xs text-gray-500">Contact the school office for account details and the latest fee schedule.</p>
+              <p className="text-xs text-gray-500 dark:text-slate-400">Contact the school office for account details and the latest fee schedule.</p>
             </div>
           </div>
 
           <div>
             <SectionTitle title="Parent-Teacher Association" center={false} />
-            <div className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl p-7 border border-gray-100 dark:border-slate-700 shadow-sm">
+              <p className="text-gray-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
                 Our active PTA works hand-in-hand with the school to improve facilities, support
                 school events, and strengthen the bond between home and school. Every parent is
                 automatically a member.
               </p>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li><strong className="text-crown-blue">When we meet:</strong> Once each term, plus an AGM at year-end.</li>
-                <li><strong className="text-crown-blue">Next meeting:</strong> Saturday, June 14, 2025, 9:00am, Main Hall.</li>
-                <li><strong className="text-crown-blue">How to join:</strong> Simply attend the next meeting — all parents are welcome.</li>
+              <ul className="space-y-2 text-sm text-gray-700 dark:text-slate-300">
+                <li><strong className="text-crown-blue dark:text-crown-gold-light">When we meet:</strong> Once each term, plus an AGM at year-end.</li>
+                <li><strong className="text-crown-blue dark:text-crown-gold-light">Next meeting:</strong> Saturday, June 14, 2025, 9:00am, Main Hall.</li>
+                <li><strong className="text-crown-blue dark:text-crown-gold-light">How to join:</strong> Simply attend the next meeting — all parents are welcome.</li>
               </ul>
             </div>
           </div>
@@ -108,7 +114,7 @@ export default function Parents() {
       </section>
 
       {/* Downloads */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Downloads" subtitle="Key documents, ready when you need them." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -117,12 +123,12 @@ export default function Parents() {
                 key={d}
                 href="#"
                 download
-                className="flex items-center gap-4 bg-crown-white rounded-xl p-5 border border-gray-100 hover:border-crown-gold transition-colors"
+                className="flex items-center gap-4 bg-crown-white dark:bg-slate-900 rounded-xl p-5 border border-gray-100 dark:border-slate-700 hover:border-crown-gold transition-colors"
               >
                 <div className="h-11 w-11 shrink-0 rounded-full bg-crown-blue text-white flex items-center justify-center">
                   <Download size={20} />
                 </div>
-                <span className="font-medium text-crown-blue">{d}</span>
+                <span className="font-medium text-crown-blue dark:text-crown-gold-light">{d}</span>
               </a>
             ))}
           </div>
@@ -130,7 +136,7 @@ export default function Parents() {
       </section>
 
       {/* Parent resources */}
-      <section className="py-16 lg:py-24 bg-crown-white border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Parent Resources" subtitle="Helpful external links for parents." />
           <div className="space-y-3">
@@ -140,9 +146,9 @@ export default function Parents() {
                 href={r.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-white rounded-xl px-5 py-4 border border-gray-100 hover:border-crown-gold transition-colors"
+                className="flex items-center justify-between bg-white dark:bg-slate-800 rounded-xl px-5 py-4 border border-gray-100 dark:border-slate-700 hover:border-crown-gold transition-colors"
               >
-                <span className="font-medium text-crown-blue">{r.label}</span>
+                <span className="font-medium text-crown-blue dark:text-crown-gold-light">{r.label}</span>
                 <ExternalLink size={18} className="text-crown-gold" />
               </a>
             ))}

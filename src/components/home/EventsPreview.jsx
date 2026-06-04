@@ -6,7 +6,7 @@ import { upcomingEvents } from "../../data/events"
 
 export default function EventsPreview() {
   return (
-    <section className="py-16 lg:py-24 bg-crown-white">
+    <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Upcoming Events"
@@ -28,10 +28,10 @@ export default function EventsPreview() {
                   <span className="text-base">{ev.date.split(" ")[1]}</span>
                   <span className="text-[10px] uppercase">{ev.date.split(" ")[0]}</span>
                 </div>
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex-1">
-                  <h3 className="font-poppins font-semibold text-crown-blue">{ev.name}</h3>
-                  <p className="text-sm text-gray-600 mt-1">{ev.description}</p>
-                  <p className="flex items-center gap-1 text-xs text-gray-500 mt-2">
+                <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-slate-700 flex-1">
+                  <h3 className="font-poppins font-semibold text-crown-blue dark:text-white">{ev.name}</h3>
+                  <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">{ev.description}</p>
+                  <p className="flex items-center gap-1 text-xs text-gray-500 dark:text-slate-400 mt-2">
                     <MapPin size={13} className="text-crown-gold" /> {ev.location}
                   </p>
                 </div>
@@ -42,7 +42,7 @@ export default function EventsPreview() {
         <div className="text-center mt-10">
           <Link
             to="/academics"
-            className="inline-flex items-center gap-2 text-crown-blue font-semibold hover:text-crown-gold transition-colors"
+            className="inline-flex items-center gap-2 text-crown-blue dark:text-crown-gold font-semibold hover:text-crown-gold transition-colors"
           >
             View Calendar <ArrowRight size={18} />
           </Link>

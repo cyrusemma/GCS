@@ -17,13 +17,13 @@ export default function SectionTitle({ title, subtitle, light = false, center = 
       />
       <h2
         className={`font-poppins font-bold text-3xl sm:text-4xl ${
-          light ? "text-white" : "text-crown-blue"
+          light ? "text-white" : "text-crown-blue dark:text-white"
         }`}
       >
         {title}
       </h2>
       {subtitle && (
-        <p className={`mt-3 text-base ${light ? "text-white/80" : "text-gray-600"}`}>
+        <p className={`mt-3 text-base ${light ? "text-white/80" : "text-gray-600 dark:text-slate-300"}`}>
           {subtitle}
         </p>
       )}

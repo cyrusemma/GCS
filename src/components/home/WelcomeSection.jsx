@@ -5,7 +5,7 @@ import { ASSETS, onImgError } from "../../data/images"
 
 export default function WelcomeSection() {
   return (
-    <section className="py-16 lg:py-24 bg-crown-white">
+    <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -14,10 +14,10 @@ export default function WelcomeSection() {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block h-1 w-12 rounded-full bg-crown-gold mb-4" />
-          <h2 className="font-poppins font-bold text-3xl sm:text-4xl text-crown-blue mb-5">
+          <h2 className="font-poppins font-bold text-3xl sm:text-4xl text-crown-blue dark:text-white mb-5">
             A Legacy of Excellence Since 2004
           </h2>
-          <div className="space-y-4 text-gray-600 leading-relaxed">
+          <div className="space-y-4 text-gray-600 dark:text-slate-300 leading-relaxed">
             <p>
               Golden Crown School is a private basic school in Lashibi, within the Tema
               Metropolitan area of Greater Accra, Ghana. Since opening our doors in 2004, we have
@@ -37,7 +37,7 @@ export default function WelcomeSection() {
           </div>
           <Link
             to="/about"
-            className="mt-6 inline-flex items-center gap-2 text-crown-blue font-semibold hover:text-crown-gold transition-colors"
+            className="mt-6 inline-flex items-center gap-2 text-crown-blue dark:text-crown-gold font-semibold hover:text-crown-gold transition-colors"
           >
             Discover Our Story <ArrowRight size={18} />
           </Link>

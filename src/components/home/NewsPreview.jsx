@@ -7,7 +7,7 @@ import { news } from "../../data/news"
 export default function NewsPreview() {
   const navigate = useNavigate()
   return (
-    <section className="py-16 lg:py-24 bg-white border-t-2 border-crown-gold">
+    <section className="py-16 lg:py-24 bg-white dark:bg-slate-900 border-t-2 border-crown-gold">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Latest News"
@@ -21,7 +21,7 @@ export default function NewsPreview() {
         <div className="text-center mt-10">
           <Link
             to="/news"
-            className="inline-flex items-center gap-2 text-crown-blue font-semibold hover:text-crown-gold transition-colors"
+            className="inline-flex items-center gap-2 text-crown-blue dark:text-crown-gold font-semibold hover:text-crown-gold transition-colors"
           >
             View All News <ArrowRight size={18} />
           </Link>

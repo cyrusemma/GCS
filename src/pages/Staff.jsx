@@ -2,11 +2,17 @@ import { Mail } from "lucide-react"
 import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
 import StaffCard from "../components/ui/StaffCard"
+import SEO from "../components/ui/SEO"
 import { leadership, teachers } from "../data/staff"
 
 export default function Staff() {
   return (
     <>
+      <SEO
+        title="Our Staff"
+        path="/staff"
+        description="Meet the leadership and teaching staff of Golden Crown School, Lashibi — experienced, qualified educators."
+      />
       <PageBanner
         title="Our Staff"
         subtitle="Meet the dedicated team behind Golden Crown School."
@@ -14,7 +20,7 @@ export default function Staff() {
       />
 
       {/* Leadership */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="School Leadership" subtitle="Experienced educators guiding our school." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -26,7 +32,7 @@ export default function Staff() {
       </section>
 
       {/* Teachers */}
-      <section className="py-16 lg:py-24 bg-crown-white border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Teaching Staff" subtitle="Subject specialists committed to every learner." />
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">

@@ -22,7 +22,7 @@ const item = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 lg:py-24 bg-white border-t-2 border-crown-gold">
+    <section className="py-16 lg:py-24 bg-white dark:bg-slate-900 border-t-2 border-crown-gold">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Why Choose Golden Crown?"
@@ -40,13 +40,13 @@ export default function WhyChooseUs() {
               key={title}
               variants={item}
               whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(13,71,161,0.15)" }}
-              className="bg-white rounded-xl p-7 border border-gray-100 shadow-sm text-center"
+              className="bg-white dark:bg-slate-800 rounded-xl p-7 border border-gray-100 dark:border-slate-700 shadow-sm text-center"
             >
               <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-crown-gold/20 flex items-center justify-center">
-                <Icon className="text-crown-blue" size={30} />
+                <Icon className="text-crown-blue dark:text-crown-gold" size={30} />
               </div>
-              <h3 className="font-poppins font-semibold text-lg text-crown-blue mb-2">{title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{text}</p>
+              <h3 className="font-poppins font-semibold text-lg text-crown-blue dark:text-white mb-2">{title}</h3>
+              <p className="text-gray-600 dark:text-slate-300 text-sm leading-relaxed">{text}</p>
             </motion.div>
           ))}
         </motion.div>

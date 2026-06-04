@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, Twitter, Send } from "lucide-react"
 import { ASSETS, onImgError } from "../../data/images"
+import { useI18n } from "../../context/I18nContext"
 
 const quickLinks = [
   { to: "/about", label: "About Us" },
@@ -19,6 +20,7 @@ const downloads = ["Prospectus", "Admission Form", "Fee Structure", "Academic Ca
 export default function Footer() {
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
+  const { t } = useI18n()
 
   const handleSubscribe = (e) => {
     e.preventDefault()
@@ -58,7 +60,7 @@ export default function Footer() {
               />
               <div>
                 <h3 className="font-poppins font-bold text-lg">Golden Crown School</h3>
-                <p className="text-crown-gold text-sm font-medium">Hardwork and Integrity</p>
+                <p className="text-crown-gold text-sm font-medium">{t("footer.tagline")}</p>
               </div>
             </div>
             <ul className="space-y-3 text-sm text-white/80">
@@ -82,7 +84,7 @@ export default function Footer() {
           {/* Column 2 — links + downloads */}
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <h4 className="font-poppins font-semibold text-crown-gold mb-4">Quick Links</h4>
+              <h4 className="font-poppins font-semibold text-crown-gold mb-4">{t("footer.quickLinks")}</h4>
               <ul className="space-y-2 text-sm text-white/80">
                 {quickLinks.map((l) => (
                   <li key={l.to}>
@@ -94,7 +96,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="font-poppins font-semibold text-crown-gold mb-4">Downloads</h4>
+              <h4 className="font-poppins font-semibold text-crown-gold mb-4">{t("footer.downloads")}</h4>
               <ul className="space-y-2 text-sm text-white/80">
                 {downloads.map((d) => (
                   <li key={d}>
@@ -109,7 +111,7 @@ export default function Footer() {
 
           {/* Column 3 — term + social + newsletter */}
           <div>
-            <h4 className="font-poppins font-semibold text-crown-gold mb-4">Academic Term</h4>
+            <h4 className="font-poppins font-semibold text-crown-gold mb-4">{t("footer.term")}</h4>
             <p className="text-sm text-white/80 mb-1">Third Term — 2024/2025</p>
             <p className="text-sm text-white/80 mb-5">School Hours: Mon–Fri, 7:00am – 5:00pm</p>
 
@@ -131,7 +133,7 @@ export default function Footer() {
               ))}
             </div>
 
-            <h4 className="font-poppins font-semibold text-crown-gold mb-3">Newsletter</h4>
+            <h4 className="font-poppins font-semibold text-crown-gold mb-3">{t("footer.newsletter")}</h4>
             {subscribed ? (
               <p className="text-sm text-crown-gold-light">Thank you for subscribing!</p>
             ) : (
@@ -159,7 +161,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/70">
-          <p>© 2025 Golden Crown School, Lashibi. All Rights Reserved.</p>
+          <p>© 2025 Golden Crown School, Lashibi. {t("footer.rights")}</p>
           <p className="text-crown-gold">www.goldencrownschool.edu.gh</p>
         </div>
       </div>

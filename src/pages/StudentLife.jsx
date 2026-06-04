@@ -5,6 +5,7 @@ import {
 } from "lucide-react"
 import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
+import SEO from "../components/ui/SEO"
 import { IMAGES, onImgError } from "../data/images"
 
 const clubs = [
@@ -33,6 +34,11 @@ const excursions = [
 export default function StudentLife() {
   return (
     <>
+      <SEO
+        title="Student Life"
+        path="/student-life"
+        description="Clubs, sports, music and arts, excursions, and student leadership at Golden Crown School, Lashibi."
+      />
       <PageBanner
         title="Student Life"
         subtitle="Learning extends far beyond the classroom at Golden Crown School."
@@ -40,7 +46,7 @@ export default function StudentLife() {
       />
 
       {/* Clubs */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Clubs & Societies" subtitle="Something for every interest and talent." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -48,13 +54,13 @@ export default function StudentLife() {
               <motion.div
                 key={name}
                 whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(13,71,161,0.15)" }}
-                className="bg-crown-white rounded-xl p-6 border border-gray-100"
+                className="bg-crown-white dark:bg-slate-900 rounded-xl p-6 border border-gray-100 dark:border-slate-700"
               >
                 <div className="h-12 w-12 rounded-full bg-crown-gold/20 flex items-center justify-center mb-4">
-                  <Icon className="text-crown-blue" size={24} />
+                  <Icon className="text-crown-blue dark:text-crown-gold-light" size={24} />
                 </div>
-                <h3 className="font-poppins font-semibold text-crown-blue mb-1">{name}</h3>
-                <p className="text-sm text-gray-600">{text}</p>
+                <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-1">{name}</h3>
+                <p className="text-sm text-gray-600 dark:text-slate-300">{text}</p>
               </motion.div>
             ))}
           </div>
@@ -62,7 +68,7 @@ export default function StudentLife() {
       </section>
 
       {/* Sports */}
-      <section className="py-16 lg:py-24 bg-crown-white border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Sports" subtitle="Healthy bodies, strong teamwork, and a competitive spirit." />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
@@ -85,13 +91,13 @@ export default function StudentLife() {
       </section>
 
       {/* Music & Arts */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <SectionTitle
             title="Music & Arts"
             subtitle="Nurturing creativity and cultural pride."
           />
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-600 dark:text-slate-300 leading-relaxed">
             Our pupils explore music, traditional Ghanaian cultural dance, drawing, painting, and
             creative arts throughout the year. From the school choir to vibrant Independence Day and
             Speech Day performances, the arts are woven into the life of the school — helping every
@@ -101,12 +107,12 @@ export default function StudentLife() {
       </section>
 
       {/* Excursions */}
-      <section className="py-16 lg:py-24 bg-crown-white border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Excursions" subtitle="Real-world learning beyond the school gates." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {excursions.map((e) => (
-              <div key={e.dest} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+              <div key={e.dest} className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700">
                 <img
                   src={e.image}
                   onError={onImgError}
@@ -115,8 +121,8 @@ export default function StudentLife() {
                   className="h-44 w-full object-cover"
                 />
                 <div className="p-5">
-                  <h3 className="font-poppins font-semibold text-crown-blue">{e.dest}</h3>
-                  <div className="flex items-center gap-4 mt-2 text-xs text-gray-500">
+                  <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light">{e.dest}</h3>
+                  <div className="flex items-center gap-4 mt-2 text-xs text-gray-500 dark:text-slate-400">
                     <span className="flex items-center gap-1"><Calendar size={13} className="text-crown-gold" /> {e.date}</span>
                     <span className="flex items-center gap-1"><MapPin size={13} className="text-crown-gold" /> {e.level}</span>
                   </div>
@@ -128,7 +134,7 @@ export default function StudentLife() {
       </section>
 
       {/* Leadership + Competitions */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10">
           <div className="bg-crown-blue text-white rounded-2xl p-8">
             <Users className="text-crown-gold mb-4" size={34} />
@@ -147,11 +153,11 @@ export default function StudentLife() {
                 { title: "District Quiz Champions", text: "Winners of the Tema District inter-school quiz." },
                 { title: "Sports Medals", text: "Consistent podium finishes at zonal athletics." },
               ].map((a) => (
-                <div key={a.title} className="flex gap-4 bg-crown-white rounded-xl p-4 border border-gray-100">
+                <div key={a.title} className="flex gap-4 bg-crown-white dark:bg-slate-900 rounded-xl p-4 border border-gray-100 dark:border-slate-700">
                   <Award className="text-crown-gold shrink-0" size={28} />
                   <div>
-                    <h4 className="font-poppins font-semibold text-crown-blue">{a.title}</h4>
-                    <p className="text-sm text-gray-600">{a.text}</p>
+                    <h4 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light">{a.title}</h4>
+                    <p className="text-sm text-gray-600 dark:text-slate-300">{a.text}</p>
                   </div>
                 </div>
               ))}

@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from "framer-motion"
 import { CheckCircle2, Users, Clock, BookOpen } from "lucide-react"
 import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
+import SEO from "../components/ui/SEO"
 import { onImgError } from "../data/images"
 import { divisions, coreSubjects, gradingScale } from "../data/academics"
 import { academicCalendar, currentTermName } from "../data/events"
 
 const termColors = {
-  blue: { bar: "bg-crown-blue", text: "text-crown-blue", ring: "border-crown-blue" },
+  blue: { bar: "bg-crown-blue", text: "text-crown-blue dark:text-crown-gold-light", ring: "border-crown-blue" },
   gold: { bar: "bg-crown-gold", text: "text-crown-gold", ring: "border-crown-gold" },
   green: { bar: "bg-emerald-600", text: "text-emerald-600", ring: "border-emerald-600" },
 }
@@ -19,6 +20,11 @@ export default function Academics() {
 
   return (
     <>
+      <SEO
+        title="Academics"
+        path="/academics"
+        description="Golden Crown School academics — Creche, Kindergarten, Primary (Basic 1–6) and JHS. GES curriculum, academic calendar, and assessment system."
+      />
       <PageBanner
         title="Academics"
         subtitle="A complete pathway from Creche to Junior High School."
@@ -26,7 +32,7 @@ export default function Academics() {
       />
 
       {/* Division tabs */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title="Our Divisions"
@@ -41,7 +47,7 @@ export default function Academics() {
                 className={`relative px-4 sm:px-5 py-2.5 rounded-full text-sm font-medium transition-colors ${
                   active === d.id
                     ? "text-white"
-                    : "text-crown-blue bg-crown-white hover:bg-crown-gold/20"
+                    : "text-crown-blue dark:text-crown-gold-light bg-crown-white dark:bg-slate-900 hover:bg-crown-gold/20"
                 }`}
               >
                 {active === d.id && (
@@ -74,32 +80,32 @@ export default function Academics() {
                 />
               </div>
               <div>
-                <h3 className="font-poppins font-bold text-2xl text-crown-blue mb-4">
+                <h3 className="font-poppins font-bold text-2xl text-crown-blue dark:text-crown-gold-light mb-4">
                   {division.name}
                 </h3>
                 <div className="flex flex-wrap gap-4 mb-5 text-sm">
-                  <span className="inline-flex items-center gap-2 text-gray-700">
+                  <span className="inline-flex items-center gap-2 text-gray-700 dark:text-slate-300">
                     <Clock size={18} className="text-crown-gold" /> {division.ageRange}
                   </span>
-                  <span className="inline-flex items-center gap-2 text-gray-700">
+                  <span className="inline-flex items-center gap-2 text-gray-700 dark:text-slate-300">
                     <Users size={18} className="text-crown-gold" /> {division.classes}
                   </span>
                 </div>
-                <p className="text-gray-600 leading-relaxed mb-5">{division.approach}</p>
+                <p className="text-gray-600 dark:text-slate-300 leading-relaxed mb-5">{division.approach}</p>
 
-                <h4 className="font-poppins font-semibold text-crown-blue mb-3 flex items-center gap-2">
+                <h4 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-3 flex items-center gap-2">
                   <BookOpen size={18} className="text-crown-gold" /> Key Subjects
                 </h4>
                 <ul className="grid sm:grid-cols-2 gap-2 mb-5">
                   {division.subjects.map((s) => (
-                    <li key={s} className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckCircle2 size={16} className="text-crown-blue shrink-0" /> {s}
+                    <li key={s} className="flex items-center gap-2 text-sm text-gray-700 dark:text-slate-300">
+                      <CheckCircle2 size={16} className="text-crown-blue dark:text-crown-gold-light shrink-0" /> {s}
                     </li>
                   ))}
                 </ul>
 
-                <h4 className="font-poppins font-semibold text-crown-blue mb-2">Class Teachers</h4>
-                <p className="text-sm text-gray-600">{division.teachers.join(" • ")}</p>
+                <h4 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Class Teachers</h4>
+                <p className="text-sm text-gray-600 dark:text-slate-300">{division.teachers.join(" • ")}</p>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -107,7 +113,7 @@ export default function Academics() {
       </section>
 
       {/* Curriculum */}
-      <section className="py-16 lg:py-24 bg-crown-white border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title="Our Curriculum"
@@ -117,7 +123,7 @@ export default function Academics() {
             {coreSubjects.map((s) => (
               <div
                 key={s}
-                className="bg-white rounded-lg px-4 py-3 text-center text-sm font-medium text-crown-blue border border-gray-100 shadow-sm"
+                className="bg-white dark:bg-slate-800 rounded-lg px-4 py-3 text-center text-sm font-medium text-crown-blue dark:text-crown-gold-light border border-gray-100 dark:border-slate-700 shadow-sm"
               >
                 {s}
               </div>
@@ -136,7 +142,7 @@ export default function Academics() {
       </section>
 
       {/* Academic Calendar */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title={`Academic Calendar ${academicCalendar.year}`}
@@ -149,8 +155,8 @@ export default function Academics() {
               return (
                 <div
                   key={term.name}
-                  className={`relative bg-white rounded-2xl shadow-sm border-2 overflow-hidden ${
-                    isCurrent ? c.ring : "border-gray-100"
+                  className={`relative bg-white dark:bg-slate-800 rounded-2xl shadow-sm border-2 overflow-hidden ${
+                    isCurrent ? c.ring : "border-gray-100 dark:border-slate-700"
                   }`}
                 >
                   <div className={`${c.bar} text-white px-5 py-4`}>
@@ -160,7 +166,7 @@ export default function Academics() {
                     </p>
                   </div>
                   {isCurrent && (
-                    <span className="absolute top-3 right-3 bg-white text-crown-blue text-[10px] font-bold uppercase px-2 py-1 rounded-full shadow">
+                    <span className="absolute top-3 right-3 bg-white dark:bg-slate-800 text-crown-blue dark:text-crown-gold-light text-[10px] font-bold uppercase px-2 py-1 rounded-full shadow">
                       Current Term
                     </span>
                   )}
@@ -168,7 +174,7 @@ export default function Academics() {
                     {term.events.map((ev) => (
                       <li key={ev.label} className="flex items-start gap-3 text-sm">
                         <span className={`shrink-0 font-semibold ${c.text} w-14`}>{ev.date}</span>
-                        <span className="text-gray-700">{ev.label}</span>
+                        <span className="text-gray-700 dark:text-slate-300">{ev.label}</span>
                       </li>
                     ))}
                   </ul>
@@ -180,13 +186,13 @@ export default function Academics() {
       </section>
 
       {/* Assessment */}
-      <section className="py-16 lg:py-24 bg-crown-white border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title="Assessment System"
             subtitle="We follow the GES grading structure: Class Score (50%) + Examinations (50%)."
           />
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-crown-blue text-white text-left">
@@ -197,10 +203,10 @@ export default function Academics() {
               </thead>
               <tbody>
                 {gradingScale.map((g, i) => (
-                  <tr key={g.grade} className={i % 2 ? "bg-crown-white" : "bg-white"}>
-                    <td className="px-5 py-3 font-semibold text-crown-blue">{g.grade}</td>
-                    <td className="px-5 py-3 text-gray-700">{g.range}</td>
-                    <td className="px-5 py-3 text-gray-700">{g.remark}</td>
+                  <tr key={g.grade} className={i % 2 ? "bg-crown-white dark:bg-slate-900" : "bg-white dark:bg-slate-800"}>
+                    <td className="px-5 py-3 font-semibold text-crown-blue dark:text-crown-gold-light">{g.grade}</td>
+                    <td className="px-5 py-3 text-gray-700 dark:text-slate-300">{g.range}</td>
+                    <td className="px-5 py-3 text-gray-700 dark:text-slate-300">{g.remark}</td>
                   </tr>
                 ))}
               </tbody>
