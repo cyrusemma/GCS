@@ -20,7 +20,7 @@ export default function Staff() {
       />
 
       {/* Leadership */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="School Leadership" subtitle="Experienced educators guiding our school." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -32,7 +32,7 @@ export default function Staff() {
       </section>
 
       {/* Teachers */}
-      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Teaching Staff" subtitle="Subject specialists committed to every learner." />
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">

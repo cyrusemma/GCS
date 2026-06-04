@@ -46,7 +46,7 @@ export default function StudentLife() {
       />
 
       {/* Clubs */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Clubs & Societies" subtitle="Something for every interest and talent." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -68,7 +68,7 @@ export default function StudentLife() {
       </section>
 
       {/* Sports */}
-      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Sports" subtitle="Healthy bodies, strong teamwork, and a competitive spirit." />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
@@ -91,7 +91,7 @@ export default function StudentLife() {
       </section>
 
       {/* Music & Arts */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <SectionTitle
             title="Music & Arts"
@@ -107,7 +107,7 @@ export default function StudentLife() {
       </section>
 
       {/* Excursions */}
-      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Excursions" subtitle="Real-world learning beyond the school gates." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -134,7 +134,7 @@ export default function StudentLife() {
       </section>
 
       {/* Leadership + Competitions */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10">
           <div className="bg-crown-blue text-white rounded-2xl p-8">
             <Users className="text-crown-gold mb-4" size={34} />

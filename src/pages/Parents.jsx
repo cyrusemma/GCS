@@ -36,7 +36,7 @@ export default function Parents() {
       />
 
       {/* Portal CTA + handbook */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-6">
           <div className="bg-crown-blue text-white rounded-2xl p-8 flex flex-col">
             <LogIn className="text-crown-gold mb-4" size={36} />
@@ -71,7 +71,7 @@ export default function Parents() {
       </section>
 
       {/* Fee payment + PTA */}
-      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10">
           <div>
             <SectionTitle title="Fee Payment" center={false} />
@@ -114,7 +114,7 @@ export default function Parents() {
       </section>
 
       {/* Downloads */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Downloads" subtitle="Key documents, ready when you need them." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -136,7 +136,7 @@ export default function Parents() {
       </section>
 
       {/* Parent resources */}
-      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Parent Resources" subtitle="Helpful external links for parents." />
           <div className="space-y-3">

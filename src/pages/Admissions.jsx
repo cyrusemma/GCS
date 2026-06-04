@@ -119,7 +119,7 @@ export default function Admissions() {
       />
 
       {/* Process steps */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="How to Apply" subtitle="Five simple steps to enrolment." />
           <motion.div
@@ -150,7 +150,7 @@ export default function Admissions() {
       </section>
 
       {/* Requirements + Fees */}
-      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
           <div>
             <SectionTitle title="Entry Requirements" center={false} />
@@ -192,7 +192,7 @@ export default function Admissions() {
       </section>
 
       {/* Uniform */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="School Uniform" subtitle="Smart, simple, and easy to maintain." />
           <div className="grid lg:grid-cols-3 gap-6 items-stretch">
@@ -231,7 +231,7 @@ export default function Admissions() {
       </section>
 
       {/* Application form */}
-      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title="Online Application Form"
@@ -383,7 +383,7 @@ export default function Admissions() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Frequently Asked Questions" />
           <div className="space-y-3">

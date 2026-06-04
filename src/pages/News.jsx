@@ -33,7 +33,7 @@ export default function News() {
       />
 
       {/* News grid */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="School News" subtitle="Catch up on everything happening in our community." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -45,7 +45,7 @@ export default function News() {
       </section>
 
       {/* Event calendar */}
-      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Event Calendar" subtitle="June 2025 — key dates at a glance." />
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 p-5">
@@ -91,7 +91,7 @@ export default function News() {
       </section>
 
       {/* Announcements / notice board */}
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Notice Board" subtitle="Important announcements for parents and pupils." />
           <div className="grid sm:grid-cols-2 gap-6">

@@ -60,7 +60,7 @@ export default function Contact() {
       />
 
       {/* Info cards */}
-      <section className="py-16 lg:py-20 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-20 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-6">
             {infoCards.map(({ Icon, title, text, href }) => (
@@ -92,7 +92,7 @@ export default function Contact() {
       </section>
 
       {/* Map + form */}
-      <section className="py-16 lg:py-24 bg-crown-white dark:bg-slate-900 border-t-2 border-crown-gold">
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
           {/* Map */}
           <div>

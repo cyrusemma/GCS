@@ -22,7 +22,7 @@ const item = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 lg:py-24 bg-white dark:bg-slate-900 border-t-2 border-crown-gold">
+    <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Why Choose Golden Crown?"

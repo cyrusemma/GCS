@@ -45,7 +45,7 @@ export default function Gallery() {
         breadcrumb="Gallery"
       />
 
-      <section className="py-16 lg:py-24 bg-white dark:bg-slate-800">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filter tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-10">

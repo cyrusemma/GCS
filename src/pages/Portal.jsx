@@ -24,7 +24,7 @@ export default function Portal() {
         path="/portal"
         description="Student & Parent Portal for Golden Crown School — check results, pay fees, and view school notifications."
       />
-      <section className="pt-16 bg-crown-white dark:bg-slate-900 min-h-screen">
+      <section className="pt-16 bg-crown-white dark:bg-[#0a1124] min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden shadow-xl bg-white dark:bg-slate-800">
           {/* Left panel */}
