@@ -8,18 +8,18 @@ import {
 import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
 import SEO from "../components/ui/SEO"
-import { ASSETS, onImgError } from "../data/images"
+import { IMAGES, ASSETS, onImgError } from "../data/images"
 import { sendEmail } from "../lib/email"
 import { celebrate } from "../lib/confetti"
 import { useToast } from "../context/ToastContext"
 
 const steps = [
-  { Icon: FileDown, title: "Obtain Application Form", text: "Collect or download the admission form from the school office." },
-  { Icon: PenLine, title: "Complete the Form", text: "Fill in all required details and attach documents for your child's level." },
-  { Icon: Wallet, title: "Submit Application", text: "Return the completed form with documents and pay the GHC 200.00 admission form fee." },
-  { Icon: ClipboardCheck, title: "Entrance Examination", text: "Primary and JHS applicants sit an entrance exam. Nursery/KG applicants are assessed informally." },
-  { Icon: ScrollText, title: "Admission Offer", text: "Successful applicants are notified and issued an offer letter." },
-  { Icon: CheckCircle2, title: "Register & Pay", text: "Pay the required tuition and fees to complete enrolment and bring all compulsory items." },
+  { Icon: FileDown, title: "Obtain Application Form", text: "Collect or download the admission form from the school office.", image: IMAGES.step_form },
+  { Icon: PenLine, title: "Complete the Form", text: "Fill in all required details and attach documents for your child's level.", image: IMAGES.step_fill },
+  { Icon: Wallet, title: "Submit Application", text: "Return the completed form with documents and pay the GHC 200.00 admission form fee.", image: IMAGES.step_submit },
+  { Icon: ClipboardCheck, title: "Entrance Examination", text: "Primary and JHS applicants sit an entrance exam. Nursery/KG applicants are assessed informally.", image: IMAGES.step_exam },
+  { Icon: ScrollText, title: "Admission Offer", text: "Successful applicants are notified and issued an offer letter.", image: IMAGES.step_offer },
+  { Icon: CheckCircle2, title: "Register & Pay", text: "Pay the required tuition and fees to complete enrolment and bring all compulsory items.", image: IMAGES.step_register },
 ]
 
 const nurseryKGRequirements = [
@@ -181,20 +181,35 @@ export default function Admissions() {
             viewport={{ once: true }}
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
           >
-            {steps.map(({ Icon, title, text }, i) => (
+            {steps.map(({ Icon, title, text, image }, i) => (
               <motion.div
                 key={title}
                 variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
-                className="relative bg-crown-white dark:bg-slate-900 rounded-xl p-6 text-center border border-gray-100 dark:border-slate-700"
+                whileHover={{ y: -4, boxShadow: "0 16px 32px rgba(13,71,161,0.15)" }}
+                className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col"
               >
-                <div className="mx-auto mb-4 h-14 w-14 rounded-full bg-crown-blue text-white flex items-center justify-center">
-                  <Icon size={24} />
+                {/* Image header */}
+                <div className="relative h-36 overflow-hidden">
+                  <img
+                    src={image}
+                    onError={onImgError}
+                    alt={title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-crown-blue-dark/80 via-crown-blue/40 to-transparent" />
+                  {/* Step number */}
+                  <span className="absolute top-3 right-3 font-poppins font-bold text-2xl text-white/60">{i + 1}</span>
+                  {/* Icon badge */}
+                  <div className="absolute bottom-3 left-4 h-11 w-11 rounded-xl bg-crown-gold/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                    <Icon size={20} className="text-crown-blue-dark" />
+                  </div>
                 </div>
-                <span className="absolute top-3 right-4 font-poppins font-bold text-3xl text-crown-gold/40">
-                  {i + 1}
-                </span>
-                <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-1">{title}</h3>
-                <p className="text-sm text-gray-600 dark:text-slate-300">{text}</p>
+                {/* Card body */}
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-1">{title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-slate-300">{text}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -297,30 +312,33 @@ export default function Admissions() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="School Uniform" subtitle="The signature Golden Crown checked fabric — gold tones that reflect our school identity." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-8">
-            <div className="bg-crown-white dark:bg-slate-900 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
-              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Boys (Nursery–Primary)</h3>
-              <p className="text-sm text-gray-600 dark:text-slate-300">
-                Golden/yellow checked patterned shirt with brown shorts.
-              </p>
-            </div>
-            <div className="bg-crown-white dark:bg-slate-900 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
-              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Girls (Nursery–Primary)</h3>
-              <p className="text-sm text-gray-600 dark:text-slate-300">
-                Golden/yellow checked patterned dress or skirt.
-              </p>
-            </div>
-            <div className="bg-crown-white dark:bg-slate-900 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
-              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Boys (JHS)</h3>
-              <p className="text-sm text-gray-600 dark:text-slate-300">
-                Same checked pattern with brown trousers.
-              </p>
-            </div>
-            <div className="bg-crown-white dark:bg-slate-900 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
-              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Girls (JHS)</h3>
-              <p className="text-sm text-gray-600 dark:text-slate-300">
-                Same checked pattern with brown skirt.
-              </p>
-            </div>
+            {[
+              { title: "Boys (Nursery–Primary)", desc: "Golden/yellow checked patterned shirt with brown shorts.", image: IMAGES.uniform_boys_primary },
+              { title: "Girls (Nursery–Primary)", desc: "Golden/yellow checked patterned dress or skirt.", image: IMAGES.uniform_girls_primary },
+              { title: "Boys (JHS)", desc: "Same checked pattern with brown trousers.", image: IMAGES.uniform_boys_jhs },
+              { title: "Girls (JHS)", desc: "Same checked pattern with brown skirt.", image: IMAGES.uniform_girls_jhs },
+            ].map(({ title, desc, image }) => (
+              <motion.div
+                key={title}
+                whileHover={{ y: -4, boxShadow: "0 16px 32px rgba(13,71,161,0.15)" }}
+                className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col"
+              >
+                <div className="relative h-36 overflow-hidden">
+                  <img
+                    src={image}
+                    onError={onImgError}
+                    alt={title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-crown-blue-dark/70 to-transparent" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-1">{title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-slate-300">{desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
           <div className="bg-crown-blue/5 dark:bg-slate-800 rounded-xl p-6 border border-crown-gold/30">
             <h4 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-3">Uniform Costs</h4>

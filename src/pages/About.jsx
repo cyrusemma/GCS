@@ -29,9 +29,9 @@ const values = [
 ]
 
 const facilities = [
-  { Icon: BookOpen, label: "Library", text: "A growing collection of books to nurture a lifelong love of reading." },
-  { Icon: Monitor, label: "Computing Laboratory", text: "Computer stations with internet access for digital skills from KG to JHS." },
-  { Icon: School, label: "State-of-the-art Classrooms", text: "Spacious, well-ventilated classrooms purpose-built for active learning." },
+  { Icon: BookOpen, label: "Library", text: "A growing collection of books to nurture a lifelong love of reading.", image: IMAGES.facility_library },
+  { Icon: Monitor, label: "Computing Laboratory", text: "Computer stations with internet access for digital skills from KG to JHS.", image: IMAGES.facility_computing },
+  { Icon: School, label: "State-of-the-art Classrooms", text: "Spacious, well-ventilated classrooms purpose-built for active learning.", image: IMAGES.facility_classroom },
 ]
 
 export default function About() {
@@ -88,30 +88,45 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Mission, Vision & Values" />
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-crown-blue text-white rounded-xl p-7">
-              <Target className="text-crown-gold mb-4" size={34} />
-              <h3 className="font-poppins font-semibold text-xl mb-3">Our Mission</h3>
-               <p className="text-white/85 text-sm leading-relaxed">
-                 To empower learners with knowledge, skills, and values through quality education, discipline, and teamwork, enabling them to excel academically and socially in a rapidly changing world.
-               </p>
+            {/* Mission */}
+            <div className="relative rounded-2xl overflow-hidden shadow-md">
+              <img src={IMAGES.mission_bg} onError={onImgError} alt="Our Mission" loading="lazy" className="w-full h-full object-cover absolute inset-0" />
+              <div className="absolute inset-0 bg-crown-blue/88" />
+              <div className="relative p-7 text-white">
+                <Target className="text-crown-gold mb-4" size={34} />
+                <h3 className="font-poppins font-semibold text-xl mb-3">Our Mission</h3>
+                <p className="text-white/85 text-sm leading-relaxed">
+                  To empower learners with knowledge, skills, and values through quality education, discipline, and teamwork, enabling them to excel academically and socially in a rapidly changing world.
+                </p>
+              </div>
             </div>
-            <div className="bg-crown-gold text-crown-blue-dark rounded-xl p-7">
-              <Eye className="mb-4" size={34} />
-              <h3 className="font-poppins font-semibold text-xl mb-3">Our Vision</h3>
-               <p className="text-crown-blue-dark/80 text-sm leading-relaxed">
-                 To raise confident, innovative, and morally upright learners who will become future leaders and agents of positive change.
-               </p>
+            {/* Vision */}
+            <div className="relative rounded-2xl overflow-hidden shadow-md">
+              <img src={IMAGES.vision_bg} onError={onImgError} alt="Our Vision" loading="lazy" className="w-full h-full object-cover absolute inset-0" />
+              <div className="absolute inset-0 bg-crown-gold/90" />
+              <div className="relative p-7 text-crown-blue-dark">
+                <Eye className="mb-4" size={34} />
+                <h3 className="font-poppins font-semibold text-xl mb-3">Our Vision</h3>
+                <p className="text-crown-blue-dark/80 text-sm leading-relaxed">
+                  To raise confident, innovative, and morally upright learners who will become future leaders and agents of positive change.
+                </p>
+              </div>
             </div>
-            <div className="bg-white dark:bg-slate-800 border-2 border-crown-blue rounded-xl p-7">
-              <Heart className="text-crown-blue dark:text-crown-gold-light mb-4" size={34} />
-              <h3 className="font-poppins font-semibold text-xl text-crown-blue dark:text-crown-gold-light mb-3">Our Values</h3>
-              <ul className="space-y-2">
-                {values.map(({ Icon, label }) => (
-                  <li key={label} className="flex items-center gap-2 text-gray-700 dark:text-slate-300 text-sm">
-                    <Icon size={18} className="text-crown-gold" /> {label}
-                  </li>
-                ))}
-              </ul>
+            {/* Values */}
+            <div className="relative rounded-2xl overflow-hidden shadow-md">
+              <img src={IMAGES.values_bg} onError={onImgError} alt="Our Values" loading="lazy" className="w-full h-full object-cover absolute inset-0" />
+              <div className="absolute inset-0 bg-crown-blue-dark/85 dark:bg-slate-900/90" />
+              <div className="relative p-7">
+                <Heart className="text-crown-gold mb-4" size={34} />
+                <h3 className="font-poppins font-semibold text-xl text-white mb-3">Our Values</h3>
+                <ul className="space-y-2">
+                  {values.map(({ Icon, label }) => (
+                    <li key={label} className="flex items-center gap-2 text-white/85 text-sm">
+                      <Icon size={18} className="text-crown-gold" /> {label}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -172,16 +187,32 @@ export default function About() {
             subtitle="Purpose-built spaces that support learning and discovery."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {facilities.map(({ Icon, label, text }) => (
-              <div key={label} className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-100 dark:border-slate-700 shadow-sm flex gap-4">
-                <div className="h-12 w-12 shrink-0 rounded-full bg-crown-gold/20 flex items-center justify-center">
-                  <Icon className="text-crown-blue dark:text-crown-gold-light" size={24} />
+            {facilities.map(({ Icon, label, text, image }) => (
+              <motion.div
+                key={label}
+                whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(13,71,161,0.18)" }}
+                className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col"
+              >
+                {/* Image header */}
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={image}
+                    onError={onImgError}
+                    alt={label}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-crown-blue-dark/80 via-crown-blue/40 to-transparent" />
+                  <div className="absolute bottom-4 left-4 h-12 w-12 rounded-xl bg-crown-gold/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                    <Icon className="text-crown-blue-dark" size={24} />
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light">{label}</h3>
-                  <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">{text}</p>
+                {/* Card body */}
+                <div className="p-5">
+                  <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-1">{label}</h3>
+                  <p className="text-sm text-gray-600 dark:text-slate-300">{text}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -208,10 +239,10 @@ export default function About() {
           <SectionTitle title="Our Achievements" light />
           <div className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide">
             {[
-              { year: "2024", title: "94% BECE Pass Rate", text: "Outstanding performance placing students in top senior high schools." },
-              { year: "2024", title: "District Quiz Champions", text: "Winners of the Tema District inter-school general knowledge quiz." },
-              { year: "2023", title: "Best Kept School Award", text: "Recognised for our clean, well-maintained campus." },
-              { year: "2025", title: "21 Years of Excellence", text: "Two decades of Hardwork and Integrity — proudly serving the Lashibi community since 2004." },
+              { year: "2024", title: "94% BECE Pass Rate", text: "Outstanding performance placing students in top senior high schools.", image: IMAGES.achieve_bece },
+              { year: "2024", title: "District Quiz Champions", text: "Winners of the Tema District inter-school general knowledge quiz.", image: IMAGES.achieve_quiz },
+              { year: "2023", title: "Best Kept School Award", text: "Recognised for our clean, well-maintained campus.", image: IMAGES.achieve_award },
+              { year: "2025", title: "21 Years of Excellence", text: "Two decades of Hardwork and Integrity — proudly serving the Lashibi community since 2004.", image: IMAGES.achieve_years },
             ].map((a, i) => (
               <motion.div
                 key={i}
@@ -219,12 +250,25 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="shrink-0 w-72 bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg"
+                whileHover={{ y: -4, boxShadow: "0 16px 32px rgba(0,0,0,0.4)" }}
+                className="shrink-0 w-72 relative rounded-2xl overflow-hidden shadow-lg"
               >
-                <Trophy className="text-crown-gold mb-3" size={30} />
-                <span className="text-xs font-semibold text-crown-gold">{a.year}</span>
-                <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mt-1">{a.title}</h3>
-                <p className="text-sm text-gray-600 dark:text-slate-300 mt-2">{a.text}</p>
+                <img
+                  src={a.image}
+                  onError={onImgError}
+                  alt={a.title}
+                  loading="lazy"
+                  className="w-full h-52 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-crown-blue-dark via-crown-blue-dark/70 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Trophy className="text-crown-gold shrink-0" size={18} />
+                    <span className="text-xs font-semibold text-crown-gold">{a.year}</span>
+                  </div>
+                  <h3 className="font-poppins font-semibold text-white">{a.title}</h3>
+                  <p className="text-sm text-white/75 mt-1">{a.text}</p>
+                </div>
               </motion.div>
             ))}
           </div>

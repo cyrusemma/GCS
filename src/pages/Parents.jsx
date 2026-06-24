@@ -5,6 +5,7 @@ import {
 import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
 import SEO from "../components/ui/SEO"
+import { IMAGES, onImgError } from "../data/images"
 
 const downloads = [
   "Admission Form",
@@ -74,15 +75,25 @@ export default function Parents() {
             <SectionTitle title="Fee Payment" center={false} />
             <div className="space-y-4">
               {[
-                { Icon: Smartphone, title: "Mobile Money", text: "Pay conveniently via MTN, Telecel, or AirtelTigo mobile money. Use your child's name as reference." },
-                { Icon: Building2, title: "Bank Transfer", text: "Direct bank transfer or deposit. Contact the school office for current account details." },
-                { Icon: Users, title: "In Person", text: "Pay at the school accounts office during office hours and collect an official receipt." },
-              ].map(({ Icon, title, text }) => (
-                <div key={title} className="flex gap-4 bg-white dark:bg-slate-800 rounded-xl p-5 border border-gray-100 dark:border-slate-700">
-                  <div className="h-11 w-11 shrink-0 rounded-full bg-crown-gold/20 flex items-center justify-center">
-                    <Icon className="text-crown-blue dark:text-crown-gold-light" size={22} />
+                { Icon: Smartphone, title: "Mobile Money", text: "Pay conveniently via MTN, Telecel, or AirtelTigo mobile money. Use your child's name as reference.", image: IMAGES.payment_mobile },
+                { Icon: Building2, title: "Bank Transfer", text: "Direct bank transfer or deposit. Contact the school office for current account details.", image: IMAGES.payment_bank },
+                { Icon: Users, title: "In Person", text: "Pay at the school accounts office during office hours and collect an official receipt.", image: IMAGES.payment_person },
+              ].map(({ Icon, title, text, image }) => (
+                <div key={title} className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <div className="relative h-32 overflow-hidden">
+                    <img
+                      src={image}
+                      onError={onImgError}
+                      alt={title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-crown-blue-dark/80 via-crown-blue/40 to-transparent" />
+                    <div className="absolute bottom-3 left-4 h-10 w-10 rounded-xl bg-crown-gold/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                      <Icon className="text-crown-blue-dark" size={20} />
+                    </div>
                   </div>
-                  <div>
+                  <div className="p-4">
                     <h4 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light">{title}</h4>
                     <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">{text}</p>
                   </div>
