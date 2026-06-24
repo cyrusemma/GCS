@@ -14,34 +14,86 @@ import { celebrate } from "../lib/confetti"
 import { useToast } from "../context/ToastContext"
 
 const steps = [
-  { Icon: FileDown, title: "Get the Form", text: "Download or collect an application form from the school office." },
-  { Icon: PenLine, title: "Complete & Submit", text: "Fill the form and submit it with the required documents." },
-  { Icon: ClipboardCheck, title: "Assessment", text: "Sit a short entrance assessment (required for JHS applicants)." },
-  { Icon: ScrollText, title: "Review & Offer", text: "We review the application and issue an offer letter." },
-  { Icon: Wallet, title: "Register", text: "Pay the acceptance fee and complete registration." },
+  { Icon: FileDown, title: "Obtain Application Form", text: "Collect or download the admission form from the school office." },
+  { Icon: PenLine, title: "Complete the Form", text: "Fill in all required details and attach documents for your child's level." },
+  { Icon: Wallet, title: "Submit Application", text: "Return the completed form with documents and pay the GHC 200.00 admission form fee." },
+  { Icon: ClipboardCheck, title: "Entrance Examination", text: "Primary and JHS applicants sit an entrance exam. Nursery/KG applicants are assessed informally." },
+  { Icon: ScrollText, title: "Admission Offer", text: "Successful applicants are notified and issued an offer letter." },
+  { Icon: CheckCircle2, title: "Register & Pay", text: "Pay the required tuition and fees to complete enrolment and bring all compulsory items." },
 ]
 
-const requirements = [
-  { level: "Creche / Nursery / KG", docs: "Birth certificate, 2 passport photos, immunisation record" },
-  { level: "Primary (Basic 1–6)", docs: "Birth certificate, 2 passport photos, previous school report" },
-  { level: "Junior High (JHS 1–3)", docs: "Birth certificate, 4 passport photos, previous school report, transfer note" },
+const nurseryKGRequirements = [
+  "Completed admission/application form",
+  "Copy of the child's birth certificate",
+  "Two recent passport-sized photographs",
+  "Copy of the child's health record",
+  "Payment of the prescribed admission fee",
 ]
 
-const fees = [
-  { level: "Creche & Nursery", note: "Contact school for current fee schedule" },
-  { level: "Kindergarten", note: "Contact school for current fee schedule" },
-  { level: "Primary", note: "Contact school for current fee schedule" },
-  { level: "Junior High School", note: "Contact school for current fee schedule" },
+const primaryJHSRequirements = [
+  "Completed admission form",
+  "Birth certificate",
+  "Two recent passport-sized photographs",
+  "Transfer letter from former school (if applicable)",
+  "Parent/Guardian's identification and contact information",
+  "Payment of admission and registration fees",
+  "Successful performance in an entrance examination",
 ]
+
+const feeItems = [
+  { item: "Admission Form & Admin Charges", amount: "GHC 200.00", note: "One-time on first admission" },
+  { item: "Tuition — Nursery", amount: "GHC 670.00", note: "Per term" },
+  { item: "Tuition — KG 1 & 2", amount: "GHC 580.00", note: "Per term" },
+  { item: "Tuition — Primary 1–6", amount: "GHC 680.00", note: "Per term" },
+  { item: "Tuition — JHS 1 & 2", amount: "GHC 770.00", note: "Per term" },
+  { item: "Tuition — JHS 3", amount: "GHC 820.00", note: "Per term" },
+  { item: "School Development Levy", amount: "GHC 30.00", note: "Per term" },
+  { item: "Furniture & Maintenance", amount: "GHC 35.00", note: "Per term" },
+  { item: "School Uniform (Nursery–Primary)", amount: "GHC 250.00", note: "Per uniform set" },
+  { item: "School Uniform (JHS)", amount: "GHC 300.00", note: "Per uniform set" },
+  { item: "Friday Wear / Lacoste", amount: "GHC 100.00", note: "Per item" },
+  { item: "File, Report & Cumulative Record", amount: "GHC 35.00", note: "Per term" },
+  { item: "Feeding Fee", amount: "GHC 10.00/day", note: "Payable daily, weekly, monthly, or termly" },
+  { item: "Class Levy", amount: "GHC 4.00/day", note: "Payable daily, weekly, monthly, or termly" },
+  { item: "Examination Fee", amount: "TBD", note: "Determined during examination period" },
+  { item: "UC Mass", amount: "GHC 100.00", note: "Per term" },
+]
+
+const termTotals = [
+  { level: "Nursery", total: "GHC 1,470.00" },
+  { level: "KG 1 & 2", total: "GHC 1,330.00" },
+  { level: "Primary 1–6", total: "GHC 1,530.00" },
+  { level: "JHS 1 & 2", total: "GHC 1,670.00" },
+  { level: "JHS 3", total: "GHC 1,720.00" },
+]
+
+const compulsoryItems = {
+  "Nursery 1 & 2": [
+    "1 key soap before admission; 4 laundry soaps at the beginning of every term",
+    "1 pack of toilet rolls and a big-size antiseptic (Dettol/Camel) — same required every term",
+    "A big-size mat (approx. GHC 150.00) and a bath-size baby towel",
+    "A set of plastic bowls, spoon, and water bottle",
+    "2 pampers/baby diapers per day",
+    "Vaccination history/record",
+  ],
+  "KG 1 & 2": [
+    "A set of plastic plates, spoon, and water bottle (replaceable when necessary)",
+    "1 pack of toilet rolls and 1 key soap — same required at the beginning of every term",
+  ],
+  "Primary 1–6": [
+    "A set of plastic plates, spoon, and water bottle (replaceable when necessary)",
+    "1 pack of toilet rolls, 1 key soap, and 4 bathing soaps — same required at the beginning of every term",
+  ],
+}
 
 const faqs = [
-  { q: "What age does my child need to be to start Creche?", a: "Children from about 1 year old are welcome in our Creche, provided they are comfortable being away from home for short periods." },
-  { q: "Is there an entrance exam?", a: "A short, friendly placement assessment is used for Primary and JHS applicants to help us place each child appropriately. Younger children are assessed informally." },
+  { q: "What age does my child need to be to start Nursery?", a: "Children from about 3 years old are welcome in our Nursery. Please contact the school office to discuss your child's readiness." },
+  { q: "Is there an entrance exam?", a: "A placement entrance examination is required for Primary and JHS applicants. Nursery and KG applicants are assessed informally." },
   { q: "When is the application deadline?", a: "Applications are accepted year-round, but spaces are limited per class. We encourage families to apply early, especially for the new academic year." },
-  { q: "What documents do I need?", a: "Generally a birth certificate, passport photographs, and (for transfers) a previous school report. See the Entry Requirements table above for details by level." },
-  { q: "Do you offer scholarships?", a: "We occasionally offer need-based support. Please contact the school office to discuss your situation." },
-  { q: "What are the school hours?", a: "School runs Monday to Friday, 7:00am to 5:00pm, including supervised after-school care." },
-  { q: "Is there a school bus service?", a: "Yes, we operate bus routes covering Lashibi, Tema, and nearby communities. Contact the office for routes and fees." },
+  { q: "What documents do I need?", a: "Nursery/KG: birth certificate, 2 passport photos, and health/immunisation record. Primary/JHS: birth certificate, 2 passport photos, transfer letter (if applicable), and parent/guardian ID." },
+  { q: "Can feeding fees be paid in installments?", a: "Yes. The daily feeding fee of GHC 10.00 can be paid daily, weekly, monthly, or termly — whichever is most convenient for the parent/guardian." },
+  { q: "What items must I bring on my child's first day?", a: "All items listed under 'Compulsory Items' for your child's level are required. Please review the full list on this page and ensure everything is ready before the first day of school." },
+  { q: "What are the school hours?", a: "School runs Monday to Friday, 7:00am to 5:00pm." },
   { q: "How do I pay school fees?", a: "Fees can be paid via mobile money, bank transfer, or in person at the school office. Details are provided on the Parents page." },
 ]
 
@@ -121,13 +173,13 @@ export default function Admissions() {
       {/* Process steps */}
       <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle title="How to Apply" subtitle="Five simple steps to enrolment." />
+          <SectionTitle title="How to Apply" subtitle="Six simple steps to enrolment." />
           <motion.div
             variants={{ show: { transition: { staggerChildren: 0.12 } } }}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
           >
             {steps.map(({ Icon, title, text }, i) => (
               <motion.div
@@ -149,44 +201,93 @@ export default function Admissions() {
         </div>
       </section>
 
-      {/* Requirements + Fees */}
       <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
-          <div>
-            <SectionTitle title="Entry Requirements" center={false} />
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden">
-              <table className="w-full text-sm text-left">
-                <thead>
-                  <tr className="bg-crown-blue text-white">
-                    <th className="px-4 py-3 font-poppins">Level</th>
-                    <th className="px-4 py-3 font-poppins">Documents Needed</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {requirements.map((r, i) => (
-                    <tr key={r.level} className={i % 2 ? "bg-crown-white dark:bg-slate-900" : "bg-white dark:bg-slate-800"}>
-                      <td className="px-4 py-3 font-medium text-crown-blue dark:text-crown-gold-light align-top">{r.level}</td>
-                      <td className="px-4 py-3 text-gray-700 dark:text-slate-300">{r.docs}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionTitle title="Entry Requirements" />
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700 p-6">
+              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light text-lg mb-4 border-b border-crown-gold/30 pb-2">Nursery / Kindergarten</h3>
+              <ul className="space-y-2">
+                {nurseryKGRequirements.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-gray-700 dark:text-slate-300">
+                    <span className="text-crown-gold mt-1 shrink-0">&#10003;</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700 p-6">
+              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light text-lg mb-4 border-b border-crown-gold/30 pb-2">Primary / JHS</h3>
+              <ul className="space-y-2">
+                {primaryJHSRequirements.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-gray-700 dark:text-slate-300">
+                    <span className="text-crown-gold mt-1 shrink-0">&#10003;</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div>
-            <SectionTitle title="School Fees" center={false} />
-            <div className="grid sm:grid-cols-2 gap-4">
-              {fees.map((f) => (
-                <div key={f.level} className="bg-white dark:bg-slate-800 rounded-xl p-5 border border-gray-100 dark:border-slate-700 shadow-sm">
-                  <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light">{f.level}</h3>
-                  <p className="text-sm text-gray-600 dark:text-slate-300 mt-1">{f.note}</p>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-gray-500 dark:text-slate-400 mt-4">
-              Fees subject to change. Contact the school office for the latest fee structure.
-            </p>
+      {/* Fees */}
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionTitle title="School Fees" subtitle="All amounts are in Ghana Cedis (GHC)." />
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700 overflow-x-auto mb-8">
+            <table className="w-full text-sm text-left">
+              <thead>
+                <tr className="bg-crown-blue text-white">
+                  <th className="px-4 py-3 font-poppins">Fee Item</th>
+                  <th className="px-4 py-3 font-poppins">Amount</th>
+                  <th className="px-4 py-3 font-poppins">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {feeItems.map((f, i) => (
+                  <tr key={f.item} className={i % 2 ? "bg-crown-white dark:bg-slate-900" : "bg-white dark:bg-slate-800"}>
+                    <td className="px-4 py-3 font-medium text-crown-blue dark:text-crown-gold-light">{f.item}</td>
+                    <td className="px-4 py-3 text-gray-700 dark:text-slate-300 font-semibold">{f.amount}</td>
+                    <td className="px-4 py-3 text-gray-500 dark:text-slate-400 text-xs">{f.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <SectionTitle title="Total Per Term" subtitle="Approximate total payable per level per term." />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
+            {termTotals.map((t) => (
+              <div key={t.level} className="bg-crown-blue text-white rounded-xl p-5 text-center shadow-md">
+                <p className="font-poppins font-semibold text-crown-gold text-sm mb-1">{t.level}</p>
+                <p className="font-poppins font-bold text-xl">{t.total}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 dark:text-slate-400 italic border-l-4 border-crown-gold pl-4">
+            Examination fees are determined separately during the examination period. Feeding fee and class levy can be paid daily, weekly, monthly, or termly. All fees are subject to review. Contact the school office for the most current fee schedule.
+          </p>
+        </div>
+      </section>
+
+      {/* Compulsory Items */}
+      <section className="py-16 lg:py-24 bg-crown-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionTitle title="Compulsory Items to Bring" subtitle="Please ensure all items for your child's level are ready on the first day." />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Object.entries(compulsoryItems).map(([level, items]) => (
+              <div key={level} className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-100 dark:border-slate-700 shadow-sm">
+                <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-4 border-b border-crown-gold/30 pb-2">{level}</h3>
+                <ul className="space-y-2">
+                  {items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-gray-700 dark:text-slate-300">
+                      <span className="text-crown-gold mt-1 shrink-0">&#8226;</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -194,38 +295,40 @@ export default function Admissions() {
       {/* Uniform */}
       <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle title="School Uniform" subtitle="Smart, simple, and easy to maintain." />
-          <div className="grid lg:grid-cols-3 gap-6 items-stretch">
+          <SectionTitle title="School Uniform" subtitle="The signature Golden Crown checked fabric — gold tones that reflect our school identity." />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-8">
             <div className="bg-crown-white dark:bg-slate-900 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
-              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Boys</h3>
+              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Boys (Nursery–Primary)</h3>
               <p className="text-sm text-gray-600 dark:text-slate-300">
-                Golden/yellow checked patterned shirt with brown shorts. Brown sandals or black shoes
-                with white socks.
+                Golden/yellow checked patterned shirt with brown shorts.
               </p>
             </div>
             <div className="bg-crown-white dark:bg-slate-900 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
-              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Girls</h3>
+              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Girls (Nursery–Primary)</h3>
               <p className="text-sm text-gray-600 dark:text-slate-300">
-                Golden/yellow checked patterned dress or skirt. Black shoes with white socks. Hair
-                neatly kept.
+                Golden/yellow checked patterned dress or skirt.
               </p>
             </div>
             <div className="bg-crown-white dark:bg-slate-900 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
-              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">PE Uniform</h3>
+              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Boys (JHS)</h3>
               <p className="text-sm text-gray-600 dark:text-slate-300">
-                House-colour sports T-shirt with navy track bottoms and white canvas shoes. Worn on
-                Wednesdays only.
+                Same checked pattern with brown trousers.
+              </p>
+            </div>
+            <div className="bg-crown-white dark:bg-slate-900 rounded-xl p-6 border border-gray-100 dark:border-slate-700">
+              <h3 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-2">Girls (JHS)</h3>
+              <p className="text-sm text-gray-600 dark:text-slate-300">
+                Same checked pattern with brown skirt.
               </p>
             </div>
           </div>
-          <div className="mt-6 flex items-center gap-4">
-            <div
-              className="h-20 w-20 rounded-lg bg-checkered border border-gray-200 dark:border-slate-700 shrink-0"
-              aria-hidden="true"
-            />
-            <p className="text-sm text-gray-600 dark:text-slate-300">
-              The signature Golden Crown checked fabric — gold tones that reflect our school identity.
-            </p>
+          <div className="bg-crown-blue/5 dark:bg-slate-800 rounded-xl p-6 border border-crown-gold/30">
+            <h4 className="font-poppins font-semibold text-crown-blue dark:text-crown-gold-light mb-3">Uniform Costs</h4>
+            <ul className="space-y-2 text-sm text-gray-700 dark:text-slate-300">
+              <li>Nursery to Primary: <strong className="text-crown-blue dark:text-crown-gold">GHC 250.00</strong> per set</li>
+              <li>JHS: <strong className="text-crown-blue dark:text-crown-gold">GHC 300.00</strong> per set</li>
+              <li>Friday Wear / Lacoste: <strong className="text-crown-blue dark:text-crown-gold">GHC 100.00</strong> each</li>
+            </ul>
           </div>
         </div>
       </section>

@@ -1,13 +1,13 @@
 import { motion } from "framer-motion"
 import {
   Target, Eye, Heart, Award, Shield, Star,
-  School, MonitorSmartphone, Library, Trees, Trophy, FlaskConical,
+  School, Monitor, BookOpen, Trophy,
 } from "lucide-react"
 import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
 import StaffCard from "../components/ui/StaffCard"
 import SEO from "../components/ui/SEO"
-import { IMAGES, onImgError } from "../data/images"
+import { IMAGES, ASSETS, onImgError } from "../data/images"
 import { leadership } from "../data/staff"
 
 const milestones = [
@@ -16,7 +16,7 @@ const milestones = [
   { year: "2012", text: "Junior High School division opens, completing the KG-to-JHS pathway." },
   { year: "2016", text: "First cohort records outstanding BECE results, placing students in top senior highs." },
   { year: "2020", text: "Campus modernisation and adoption of the GES standards-based curriculum." },
-  { year: "2024", text: "New state-of-the-art ICT laboratory commissioned for all levels." },
+  { year: "2024", text: "New state-of-the-art Computing Laboratory commissioned, expanding digital skills across all levels." },
   { year: "2025", text: "The school proudly celebrates 21 years of Hardwork and Integrity." },
 ]
 
@@ -29,12 +29,9 @@ const values = [
 ]
 
 const facilities = [
-  { Icon: School, label: "Modern Classrooms", text: "Spacious, well-ventilated classrooms designed for active learning." },
-  { Icon: MonitorSmartphone, label: "ICT Laboratory", text: "30 computer stations with internet for digital skills from KG to JHS." },
-  { Icon: Library, label: "Library", text: "A growing collection of books to nurture a lifelong love of reading." },
-  { Icon: Trees, label: "Playground", text: "Safe, supervised play areas for our youngest learners." },
-  { Icon: Trophy, label: "Sports Field", text: "Open grounds for football, athletics, and physical education." },
-  { Icon: FlaskConical, label: "Science Corner", text: "Hands-on resources that bring integrated science to life." },
+  { Icon: BookOpen, label: "Library", text: "A growing collection of books to nurture a lifelong love of reading." },
+  { Icon: Monitor, label: "Computing Laboratory", text: "Computer stations with internet access for digital skills from KG to JHS." },
+  { Icon: School, label: "State-of-the-art Classrooms", text: "Spacious, well-ventilated classrooms purpose-built for active learning." },
 ]
 
 export default function About() {
@@ -94,19 +91,16 @@ export default function About() {
             <div className="bg-crown-blue text-white rounded-xl p-7">
               <Target className="text-crown-gold mb-4" size={34} />
               <h3 className="font-poppins font-semibold text-xl mb-3">Our Mission</h3>
-              <p className="text-white/85 text-sm leading-relaxed">
-                To provide quality, affordable basic education that develops disciplined,
-                hardworking, and confident learners ready to excel academically and contribute
-                positively to society.
-              </p>
+               <p className="text-white/85 text-sm leading-relaxed">
+                 To empower learners with knowledge, skills, and values through quality education, discipline, and teamwork, enabling them to excel academically and socially in a rapidly changing world.
+               </p>
             </div>
             <div className="bg-crown-gold text-crown-blue-dark rounded-xl p-7">
               <Eye className="mb-4" size={34} />
               <h3 className="font-poppins font-semibold text-xl mb-3">Our Vision</h3>
-              <p className="text-crown-blue-dark/80 text-sm leading-relaxed">
-                To be a leading basic school in the Tema Metropolis, recognised for academic
-                excellence, strong character formation, and a nurturing learning community.
-              </p>
+               <p className="text-crown-blue-dark/80 text-sm leading-relaxed">
+                 To raise confident, innovative, and morally upright learners who will become future leaders and agents of positive change.
+               </p>
             </div>
             <div className="bg-white dark:bg-slate-800 border-2 border-crown-blue rounded-xl p-7">
               <Heart className="text-crown-blue dark:text-crown-gold-light mb-4" size={34} />
@@ -134,11 +128,11 @@ export default function About() {
             className="lg:col-span-2"
           >
             <img
-              src={IMAGES.staff_1}
+              src={ASSETS.director}
               onError={onImgError}
-              alt="Headteacher of Golden Crown School"
+              alt="Mr. Emmanuel Kponyo — Director, Golden Crown School"
               loading="lazy"
-              className="rounded-2xl w-full h-80 object-cover shadow-lg border-4 border-crown-gold"
+              className="rounded-2xl w-full h-80 object-cover object-top shadow-lg border-4 border-crown-gold"
             />
           </motion.div>
           <motion.div
@@ -150,7 +144,7 @@ export default function About() {
           >
             <span className="inline-block h-1 w-12 rounded-full bg-crown-gold mb-4" />
             <h2 className="font-poppins font-bold text-3xl text-crown-blue dark:text-crown-gold-light mb-4">
-              Headteacher's Message
+              Director's Message
             </h2>
             <div className="border-l-4 border-crown-gold pl-5 space-y-3 text-gray-600 dark:text-slate-300 leading-relaxed">
               <p>
@@ -164,8 +158,8 @@ export default function About() {
                 and see the difference that genuine care and committed teaching can make."
               </p>
             </div>
-            <p className="mt-5 font-poppins font-semibold text-crown-blue dark:text-crown-gold-light">Mr. Emmanuel Asante</p>
-            <p className="text-sm text-crown-gold">Headteacher</p>
+            <p className="mt-5 font-poppins font-semibold text-crown-blue dark:text-crown-gold-light">Mr. Emmanuel Kponyo</p>
+            <p className="text-sm text-crown-gold">Director</p>
           </motion.div>
         </div>
       </section>
@@ -175,7 +169,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title="Our Facilities"
-            subtitle="Purpose-built spaces that support learning, play, and discovery."
+            subtitle="Purpose-built spaces that support learning and discovery."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {facilities.map(({ Icon, label, text }) => (
@@ -216,8 +210,8 @@ export default function About() {
             {[
               { year: "2024", title: "94% BECE Pass Rate", text: "Outstanding performance placing students in top senior high schools." },
               { year: "2024", title: "District Quiz Champions", text: "Winners of the Tema District inter-school general knowledge quiz." },
-              { year: "2023", title: "Best Kept School Award", text: "Recognised for our clean, green, and well-maintained campus." },
-              { year: "2022", title: "Sports Excellence", text: "Multiple medals at the zonal athletics championships." },
+              { year: "2023", title: "Best Kept School Award", text: "Recognised for our clean, well-maintained campus." },
+              { year: "2025", title: "21 Years of Excellence", text: "Two decades of Hardwork and Integrity — proudly serving the Lashibi community since 2004." },
             ].map((a, i) => (
               <motion.div
                 key={i}

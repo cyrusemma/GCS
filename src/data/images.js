@@ -2,6 +2,7 @@
 export const ASSETS = {
   badge: "/assets/golden_crown_school_badge.png",
   building: "/assets/building_from_outside_view_of_golden_cr.webp",
+  director: "/assets/director.jpg",
 }
 
 export const IMAGES = {
@@ -35,6 +36,7 @@ export const IMAGES = {
   gallery_12: "https://images.unsplash.com/photo-1605711285791-0219e80e43a3?w=600&q=80",
 
   // Staff
+  director: "/assets/director.jpg",
   staff_1: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=300&q=80",
   staff_2: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80",
   staff_3: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80",

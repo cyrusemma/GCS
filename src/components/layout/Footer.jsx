@@ -9,13 +9,13 @@ const quickLinks = [
   { to: "/academics", label: "Academics" },
   { to: "/admissions", label: "Admissions" },
   { to: "/student-life", label: "Student Life" },
+  { to: "/staff", label: "Our Staff" },
   { to: "/gallery", label: "Gallery" },
   { to: "/news", label: "News & Events" },
-  { to: "/staff", label: "Our Staff" },
   { to: "/contact", label: "Contact" },
 ]
 
-const downloads = ["Prospectus", "Admission Form", "Fee Structure", "Academic Calendar"]
+const downloads = ["Admission Form", "Fee Structure", "School Handbook"]
 
 export default function Footer() {
   const [email, setEmail] = useState("")

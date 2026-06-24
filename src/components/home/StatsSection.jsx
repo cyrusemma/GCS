@@ -1,10 +1,10 @@
 import StatCard from "../ui/StatCard"
 
 const stats = [
-  { value: 700, suffix: "+", label: "Students Enrolled" },
-  { value: 40, suffix: "+", label: "Qualified Teachers" },
-  { value: 21, suffix: "", label: "Years of Excellence" },
-  { value: 5, suffix: "", label: "Academic Divisions" },
+  { value: 200, prefix: "~", suffix: "", label: "Students Enrolled" },
+  { value: 22, prefix: "", suffix: "", label: "Staff Members" },
+  { value: 21, prefix: "", suffix: "", label: "Years of Excellence" },
+  { value: 5, prefix: "", suffix: "", label: "Academic Divisions" },
 ]
 
 export default function StatsSection() {

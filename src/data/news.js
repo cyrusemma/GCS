@@ -30,9 +30,9 @@ export const news = [
     category: "Facilities",
     image: IMAGES.news_3,
     excerpt:
-      "Golden Crown School officially opened a new state-of-the-art ICT laboratory with 30 computer stations...",
+      "Golden Crown School officially opened a new state-of-the-art computing laboratory, equipped for digital skills education from KG to JHS...",
     body:
-      "Our newly commissioned ICT laboratory is now fully operational, equipped with 30 modern computer workstations, reliable internet connectivity, and an interactive teaching display. The facility allows every pupil — from Kindergarten to JHS — to develop essential digital skills aligned with the Ghana Education Service curriculum. The lab will also host coding clubs and typing proficiency programmes throughout the academic year.",
+      "Our newly commissioned Computing Laboratory is now fully operational, equipped with modern computer workstations, reliable internet connectivity, and an interactive teaching display. The facility allows every pupil — from Kindergarten to JHS — to develop essential digital skills aligned with the Ghana Education Service curriculum.",
   },
   {
     id: 4,
@@ -52,9 +52,9 @@ export const news = [
     category: "Events",
     image: IMAGES.gallery_4,
     excerpt:
-      "This year's annual sports day was a spectacular event with over 700 students, parents, and teachers in attendance...",
+      "This year's annual sports day was a spectacular event, bringing together students, parents, and teachers for a day of friendly competition and celebration...",
     body:
-      "Our annual Sports Day transformed the campus into a sea of house colours as more than 700 students competed in athletics, relays, and fun games. Parents cheered from the stands while the school brass band kept spirits high. Beyond the medals, the day celebrated teamwork, healthy competition, and the joy of physical activity — values we hold dear at Golden Crown School.",
+      "Our annual Sports Day brought together our entire school community — students, parents, and staff — in a celebration of teamwork, healthy competition, and school spirit. Students competed in various activities and fun games while parents cheered them on. Beyond the medals, the day celebrated teamwork and the joy of physical activity — values we hold dear at Golden Crown School.",
   },
   {
     id: 6,

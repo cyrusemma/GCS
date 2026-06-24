@@ -7,12 +7,9 @@ import SectionTitle from "../components/ui/SectionTitle"
 import SEO from "../components/ui/SEO"
 
 const downloads = [
-  "Prospectus 2024/2025",
   "Admission Form",
   "Fee Structure",
-  "Academic Calendar",
   "School Handbook",
-  "School Rules & Code of Conduct",
 ]
 
 const resources = [

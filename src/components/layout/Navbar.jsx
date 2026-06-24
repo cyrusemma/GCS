@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { NavLink, Link, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, LogIn, Sun, Moon, Globe } from "lucide-react"
+import { Menu, X, LogIn, Sun, Moon } from "lucide-react"
 import { ASSETS, onImgError } from "../../data/images"
 import { useTheme } from "../../context/ThemeContext"
 import { useI18n } from "../../context/I18nContext"
@@ -12,11 +12,8 @@ const linkDefs = [
   { to: "/about", key: "about" },
   { to: "/academics", key: "academics" },
   { to: "/admissions", key: "admissions" },
-  { to: "/student-life", key: "studentLife" },
   { to: "/gallery", key: "gallery" },
   { to: "/news", key: "news" },
-  { to: "/parents", key: "parents" },
-  { to: "/staff", key: "staff" },
   { to: "/contact", key: "contact" },
 ]
 
@@ -25,7 +22,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const location = useLocation()
   const { theme, toggleTheme } = useTheme()
-  const { lang, setLang, t } = useI18n()
+  const { t } = useI18n()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -111,16 +108,6 @@ export default function Navbar() {
 
           {/* Right actions */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Language toggle */}
-            <button
-              onClick={() => setLang(lang === "en" ? "tw" : "en")}
-              aria-label={`Switch language (current: ${lang === "en" ? "English" : "Twi"})`}
-              className={`${iconBtn} text-xs font-semibold gap-1`}
-            >
-              <Globe size={15} />
-              <span className="hidden sm:inline">{lang === "en" ? "EN" : "TW"}</span>
-            </button>
-
             {/* Theme toggle */}
             <button onClick={toggleTheme} aria-label="Toggle dark mode" className={iconBtn}>
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}

@@ -1,6 +1,7 @@
 import { IMAGES } from "./images"
 
 export const leadership = [
+  { name: "Mr. Emmanuel Kponyo", title: "Director", image: IMAGES.director, bio: "Founder and Director of Golden Crown School, committed to quality basic education in Lashibi since 2004." },
   { name: "Mr. Emmanuel Asante", title: "Headteacher", image: IMAGES.staff_1, bio: "MSc Education Management. Over 18 years in basic education." },
   { name: "Mrs. Grace Mensah", title: "Deputy Headteacher", image: IMAGES.staff_2, bio: "BA Education. Specialist in early childhood development." },
   { name: "Mr. Daniel Boateng", title: "Head of Academics", image: IMAGES.staff_4, bio: "BSc Mathematics. 12 years teaching experience." },

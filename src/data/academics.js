@@ -1,12 +1,31 @@
 import { IMAGES } from "./images"
 
+export const schoolInfo = {
+  name: "Golden Crown School",
+  tagline: "Hardwork and Integrity",
+  established: 2004,
+  location: "Lashibi, Tema Metropolitan, Greater Accra Region, Ghana",
+  address: "MXM6+VVC, Lashibi, Greater Accra, Ghana",
+  phone: "+233 55 555 3729",
+  email: "info@goldencrownschool.edu.gh",
+  website: "www.goldencrownschool.edu.gh",
+  students: 200,
+  staff: 22,
+  vision:
+    "To raise confident, innovative, and morally upright learners who will become future leaders and agents of positive change.",
+  mission:
+    "To empower learners with knowledge, skills, and values through quality education, discipline, and teamwork, enabling them to excel academically and socially in a rapidly changing world.",
+  facilities: ["Library", "Computing Laboratory", "State-of-the-art Classroom Facilities"],
+  values: ["Hardwork", "Integrity", "Discipline", "Excellence", "Respect"],
+}
+
 export const divisions = [
   {
-    id: "creche",
-    name: "Creche & Nursery",
-    badge: "Ages 1–3",
-    ageRange: "1 to 3 years",
-    classes: "3 classes (Creche, Nursery 1, Nursery 2)",
+    id: "nursery",
+    name: "Nursery",
+    badge: "Nursery 1 & 2",
+    ageRange: "3 to 4 years",
+    classes: "2 classes (Nursery 1, Nursery 2)",
     image: IMAGES.academic_nursery,
     subjects: ["Early Literacy", "Numeracy Readiness", "Rhymes & Songs", "Creative Play", "Motor Skills", "Social Habits"],
     approach:

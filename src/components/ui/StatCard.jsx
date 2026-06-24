@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 
 // Animated count-up stat. Counts when scrolled into view via IntersectionObserver.
-export default function StatCard({ value, suffix = "", label }) {
+export default function StatCard({ value, prefix = "", suffix = "", label }) {
   const [count, setCount] = useState(0)
   const [started, setStarted] = useState(false)
   const ref = useRef(null)
@@ -38,8 +38,7 @@ export default function StatCard({ value, suffix = "", label }) {
   return (
     <div ref={ref} className="text-center">
       <div className="font-poppins font-bold text-4xl sm:text-5xl text-crown-gold">
-        {count}
-        {suffix}
+        {prefix}{count}{suffix}
       </div>
       <div className="mt-2 text-white/85 text-sm sm:text-base font-medium">{label}</div>
     </div>
