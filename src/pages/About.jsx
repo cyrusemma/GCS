@@ -147,7 +147,7 @@ export default function About() {
               onError={onImgError}
               alt="Mr. Emmanuel Kponyo — Director, Golden Crown School"
               loading="lazy"
-              className="rounded-2xl w-full h-80 object-cover object-top shadow-lg border-4 border-crown-gold"
+              className="rounded-2xl w-full h-80 object-cover object-[center_25%] shadow-lg border-4 border-crown-gold"
             />
           </motion.div>
           <motion.div

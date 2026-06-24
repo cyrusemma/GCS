@@ -2,7 +2,7 @@
 export const ASSETS = {
   badge: "/assets/golden_crown_school_badge.png",
   building: "/assets/building_from_outside_view_of_golden_cr.webp",
-  director: "/assets/director.jpg",
+  director: "/assets/director2.png",
 }
 
 export const IMAGES = {
