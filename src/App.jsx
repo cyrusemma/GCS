@@ -9,6 +9,7 @@ import WhatsAppButton from "./components/ui/WhatsAppButton"
 import Preloader from "./components/ui/Preloader"
 import RouteCurtain from "./components/ui/RouteCurtain"
 import CustomCursor from "./components/ui/CustomCursor"
+import BackgroundWatermark from "./components/ui/BackgroundWatermark"
 
 import Home from "./pages/Home"
 import About from "./pages/About"
@@ -41,13 +42,15 @@ export default function App() {
   const location = useLocation()
 
   return (
-    <div className="font-poppins flex flex-col min-h-screen bg-crown-white dark:bg-[#0a1124] transition-colors">
+    <div className="font-poppins relative flex flex-col min-h-screen bg-crown-white dark:bg-[#0a1124] transition-colors overflow-x-hidden">
+      <BackgroundWatermark />
       <Preloader />
       <CustomCursor />
       <RouteCurtain />
       <ScrollToTop />
-      <Navbar />
-      <div className="flex-1">
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Navbar />
+        <div className="flex-1">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={page(Home)} />
@@ -63,9 +66,10 @@ export default function App() {
             <Route path="/portal" element={page(Portal)} />
           </Routes>
         </AnimatePresence>
+        </div>
+        <Footer />
+        <WhatsAppButton />
       </div>
-      <Footer />
-      <WhatsAppButton />
     </div>
   )
 }
