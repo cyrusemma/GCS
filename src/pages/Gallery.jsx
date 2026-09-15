@@ -4,19 +4,12 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Maximize2,
   Sparkles,
-  SlidersHorizontal,
-  Compass,
-  LayoutGrid,
-  Film,
   Layers,
   Calendar,
 } from "lucide-react"
 import PageBanner from "../components/ui/PageBanner"
-import GalleryCard from "../components/ui/GalleryCard"
 import GallerySpotlight from "../components/gallery/GallerySpotlight"
-import ParallaxGalleryGrid from "../components/gallery/ParallaxGalleryGrid"
 import KineticMarquee from "../components/gallery/KineticMarquee"
 import SEO from "../components/ui/SEO"
 import {
@@ -28,7 +21,6 @@ import { onImgError } from "../data/images"
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState("All")
-  const [viewMode, setViewMode] = useState("parallax") // "parallax" | "grid" | "marquee"
   const [activeLightbox, setActiveLightbox] = useState(null) // { item, imgIndex }
 
   // Filter items based on selected category
@@ -111,13 +103,13 @@ export default function Gallery() {
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-crown-gold/15 text-crown-blue dark:text-crown-gold border border-crown-gold/30 mb-3">
               <Sparkles size={14} className="text-crown-gold" />
-              Dynamic Visual Journey
+              Kinetic Visual Journey
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-crown-blue dark:text-white tracking-tight">
               Life at Golden Crown
             </h2>
             <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-slate-300">
-              Immerse yourself in our classroom discoveries, athletic victories, and vibrant campus milestones.
+              Immerse yourself in our classroom discoveries, athletic victories, and vibrant campus milestones through our flowing visual ribbons.
             </p>
           </div>
 
@@ -132,12 +124,10 @@ export default function Gallery() {
             }
           />
 
-          {/* 2. Interactive Navigation Controls: View Mode + Categories */}
-          <div className="sticky top-20 z-30 mb-10 p-3 sm:p-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-gray-200/80 dark:border-slate-800 shadow-lg">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-              
-              {/* Category Filter Pills */}
-              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide py-1">
+          {/* 2. Category Filter Pills */}
+          <div className="sticky top-20 z-30 mb-8 p-3 sm:p-4 rounded-2xl bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl border border-gray-200/80 dark:border-slate-800 shadow-lg">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide py-1 w-full">
                 {GALLERY_CATEGORIES.map((cat) => {
                   const isActive = selectedCategory === cat
                   return (
@@ -162,109 +152,25 @@ export default function Gallery() {
                   )
                 })}
               </div>
-
-              {/* View Switcher: Parallax Flow vs Standard Grid vs Kinetic Ribbon */}
-              <div className="flex items-center self-end lg:self-auto gap-1 bg-gray-100 dark:bg-slate-800/90 p-1 rounded-xl border border-gray-200 dark:border-slate-700/60 flex-shrink-0">
-                <button
-                  onClick={() => setViewMode("parallax")}
-                  aria-label="Parallax Flow Mode"
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
-                    viewMode === "parallax"
-                      ? "bg-white dark:bg-slate-700 text-crown-blue dark:text-crown-gold shadow-sm"
-                      : "text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white"
-                  }`}
-                >
-                  <Compass size={14} />
-                  <span>Parallax Motion</span>
-                </button>
-
-                <button
-                  onClick={() => setViewMode("grid")}
-                  aria-label="Curated Grid Mode"
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
-                    viewMode === "grid"
-                      ? "bg-white dark:bg-slate-700 text-crown-blue dark:text-crown-gold shadow-sm"
-                      : "text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white"
-                  }`}
-                >
-                  <LayoutGrid size={14} />
-                  <span>Masonry Grid</span>
-                </button>
-
-                <button
-                  onClick={() => setViewMode("marquee")}
-                  aria-label="Kinetic Ribbon Mode"
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
-                    viewMode === "marquee"
-                      ? "bg-white dark:bg-slate-700 text-crown-blue dark:text-crown-gold shadow-sm"
-                      : "text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white"
-                  }`}
-                >
-                  <Film size={14} />
-                  <span>Kinetic Ribbon</span>
-                </button>
-              </div>
             </div>
           </div>
 
-          {/* 3. Main Gallery Render Area */}
+          {/* 3. Multi-Band Kinetic Ribbon Flow */}
           <div className="relative w-full">
             <AnimatePresence mode="wait">
-              {viewMode === "parallax" && (
-                <motion.div
-                  key={`parallax-${selectedCategory}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4 }}
-                  className="relative w-full"
-                >
-                  <ParallaxGalleryGrid
-                    items={filteredItems}
-                    onSelectCard={(item, imgIndex) => openLightbox(item, imgIndex)}
-                  />
-                </motion.div>
-              )}
-
-              {viewMode === "grid" && (
-                <motion.div
-                  key={`grid-${selectedCategory}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4 }}
-                  className="relative w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                  {filteredItems.map((item, idx) => (
-                    <GalleryCard
-                      key={item.id || idx}
-                      item={item}
-                      onClick={(cardItem, imgIndex) => openLightbox(cardItem, imgIndex)}
-                    />
-                  ))}
-                </motion.div>
-              )}
-
-              {viewMode === "marquee" && (
-                <motion.div
-                  key={`marquee-${selectedCategory}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4 }}
-                  className="relative w-full"
-                >
-                  <div className="mb-6 text-center">
-                    <p className="text-xs text-gray-500 dark:text-slate-400 font-medium">
-                      Continuous smooth flowing film strip • Hover over any photo to pause and explore
-                    </p>
-                  </div>
-                  <KineticMarquee
-                    items={filteredItems}
-                    onSelectCard={(item, imgIndex) => openLightbox(item, imgIndex)}
-                  />
-                </motion.div>
-              )}
+              <motion.div
+                key={`ribbon-${selectedCategory}`}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.35 }}
+                className="relative w-full"
+              >
+                <KineticMarquee
+                  items={filteredItems}
+                  onSelectCard={(item, imgIndex) => openLightbox(item, imgIndex)}
+                />
+              </motion.div>
             </AnimatePresence>
           </div>
 
