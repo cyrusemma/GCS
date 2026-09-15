@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 
 // A button/link that subtly follows the cursor (magnetic effect) on desktop.
-// Renders as a router Link when `to` is given, an anchor when `href` is given,
-// otherwise a button.
 export default function MagneticButton({
   to,
   href,
@@ -28,36 +26,51 @@ export default function MagneticButton({
     x.set((e.clientX - (rect.left + rect.width / 2)) * strength)
     y.set((e.clientY - (rect.top + rect.height / 2)) * strength)
   }
+
   const reset = () => {
     x.set(0)
     y.set(0)
   }
 
-  const MotionTag = to
-    ? (motion.create ? motion.create(Link) : motion(Link))
-    : href
-    ? motion.a
-    : motion.button
+  const motionProps = {
+    ref,
+    onMouseMove: handleMove,
+    onMouseLeave: reset,
+    style: { x: sx, y: sy },
+    whileTap: { scale: 0.96 },
+    className,
+    ...rest,
+  }
 
-  const tagProps = to
-    ? { to }
-    : href
-    ? { href }
-    : { type: type || "button", onClick }
+  if (to) {
+    return (
+      <motion.div {...motionProps} className={`inline-block ${className}`}>
+        <Link to={to} onClick={onClick} className="w-full h-full flex items-center justify-center">
+          {children}
+        </Link>
+      </motion.div>
+    )
+  }
+
+  if (href) {
+    return (
+      <motion.a
+        {...motionProps}
+        href={href}
+        onClick={onClick}
+      >
+        {children}
+      </motion.a>
+    )
+  }
 
   return (
-    <MotionTag
-      ref={ref}
-      {...tagProps}
-      {...rest}
+    <motion.button
+      {...motionProps}
+      type={type || "button"}
       onClick={onClick}
-      onMouseMove={handleMove}
-      onMouseLeave={reset}
-      style={{ x: sx, y: sy }}
-      whileTap={{ scale: 0.96 }}
-      className={className}
     >
       {children}
-    </MotionTag>
+    </motion.button>
   )
 }
