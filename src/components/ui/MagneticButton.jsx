@@ -33,7 +33,11 @@ export default function MagneticButton({
     y.set(0)
   }
 
-  const MotionTag = to ? motion(Link) : href ? motion.a : motion.button
+  const MotionTag = to
+    ? (motion.create ? motion.create(Link) : motion(Link))
+    : href
+    ? motion.a
+    : motion.button
 
   const tagProps = to
     ? { to }
