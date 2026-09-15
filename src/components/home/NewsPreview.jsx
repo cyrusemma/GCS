@@ -2,10 +2,11 @@ import { Link, useNavigate } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 import SectionTitle from "../ui/SectionTitle"
 import NewsCard from "../ui/NewsCard"
-import { news } from "../../data/news"
+import { useData } from "../../context/DataContext"
 
 export default function NewsPreview() {
   const navigate = useNavigate()
+  const { news } = useData()
   return (
     <section className="py-16 lg:py-24 bg-white dark:bg-[#0a1124] border-t-2 border-crown-gold">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

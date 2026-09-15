@@ -6,6 +6,7 @@ import SectionTitle from "../components/ui/SectionTitle"
 import SEO from "../components/ui/SEO"
 import { sendEmail } from "../lib/email"
 import { useToast } from "../context/ToastContext"
+import { useData } from "../context/DataContext"
 
 const inputClass =
   "w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-crown-blue/40 focus:border-crown-blue"
@@ -21,17 +22,26 @@ export default function Contact() {
   const [status, setStatus] = useState(null) // 'success' | 'error'
   const [submitting, setSubmitting] = useState(false)
   const { toast } = useToast()
+  const { addSubmission } = useData()
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (formData) => {
     setSubmitting(true)
     try {
+      addSubmission({
+        type: "contact",
+        parentName: formData.name,
+        email: formData.email,
+        phone: formData.phone || "—",
+        message: `${formData.subject ? `[${formData.subject}] ` : ""}${formData.message}`,
+      })
+
       await sendEmail("contact", {
         form_type: "Contact Message",
-        name: data.name,
-        email: data.email,
-        phone: data.phone || "—",
-        subject: data.subject,
-        message: data.message,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || "—",
+        subject: formData.subject,
+        message: formData.message,
       })
       setStatus("success")
       reset()

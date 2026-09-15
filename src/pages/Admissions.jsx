@@ -12,6 +12,7 @@ import { IMAGES, ASSETS, onImgError } from "../data/images"
 import { sendEmail } from "../lib/email"
 import { celebrate } from "../lib/confetti"
 import { useToast } from "../context/ToastContext"
+import { useData } from "../context/DataContext"
 
 const steps = [
   { Icon: FileDown, title: "Obtain Application Form", text: "Collect or download the admission form from the school office.", image: IMAGES.step_form },
@@ -124,10 +125,21 @@ export default function Admissions() {
   const [submitting, setSubmitting] = useState(false)
   const [openFaq, setOpenFaq] = useState(0)
   const { toast } = useToast()
+  const { addSubmission } = useData()
 
   const onSubmit = async (data) => {
     setSubmitting(true)
     try {
+      addSubmission({
+        type: "admission",
+        studentName: data.studentName,
+        parentName: data.fatherName || data.motherName || "Parent",
+        email: data.email,
+        phone: data.fatherPhone || data.motherPhone || "—",
+        grade: data.classApplying,
+        message: `DOB: ${data.dob} • Area: ${data.area || "—"} • Prev School: ${data.previousSchool || "None"}`,
+      })
+
       await sendEmail("admission", {
         form_type: "Admission Application",
         student_name: data.studentName,

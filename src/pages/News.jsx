@@ -5,7 +5,7 @@ import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
 import NewsCard from "../components/ui/NewsCard"
 import SEO from "../components/ui/SEO"
-import { news } from "../data/news"
+import { useData } from "../context/DataContext"
 import { announcements } from "../data/events"
 import { onImgError } from "../data/images"
 
@@ -17,6 +17,7 @@ const eventDays = {
 }
 
 export default function News() {
+  const { news } = useData()
   const [article, setArticle] = useState(null)
 
   return (

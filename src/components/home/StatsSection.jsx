@@ -1,13 +1,21 @@
 import StatCard from "../ui/StatCard"
-
-const stats = [
-  { value: 200, prefix: "~", suffix: "", label: "Students Enrolled" },
-  { value: 22, prefix: "", suffix: "", label: "Staff Members" },
-  { value: 21, prefix: "", suffix: "", label: "Years of Excellence" },
-  { value: 5, prefix: "", suffix: "", label: "Academic Divisions" },
-]
+import { useData } from "../../context/DataContext"
 
 export default function StatsSection() {
+  const { schoolInfo, teachers, leadership } = useData()
+
+  // Extract numeric values from schoolInfo strings if possible
+  const enrolledNum = parseInt(schoolInfo?.studentsEnrolled || "450", 10) || 450
+  const yearsNum = parseInt(schoolInfo?.yearsOfExcellence || "21", 10) || 21
+  const staffCount = (teachers?.length || 0) + (leadership?.length || 0) || 22
+
+  const stats = [
+    { value: enrolledNum, prefix: "", suffix: "+", label: "Students Enrolled" },
+    { value: staffCount, prefix: "", suffix: "", label: "Staff Members" },
+    { value: yearsNum, prefix: "", suffix: "+", label: "Years of Excellence" },
+    { value: 5, prefix: "", suffix: "", label: "Academic Divisions" },
+  ]
+
   return (
     <section className="py-16 lg:py-20 bg-crown-blue">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

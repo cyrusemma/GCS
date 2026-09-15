@@ -22,6 +22,7 @@ import Parents from "./pages/Parents"
 import Staff from "./pages/Staff"
 import Contact from "./pages/Contact"
 import Portal from "./pages/Portal"
+import Admin from "./pages/Admin"
 
 // Scroll to top whenever the route changes.
 function ScrollToTop() {
@@ -64,6 +65,7 @@ export default function App() {
             <Route path="/staff" element={page(Staff)} />
             <Route path="/contact" element={page(Contact)} />
             <Route path="/portal" element={page(Portal)} />
+            <Route path="/admin" element={page(Admin)} />
           </Routes>
         </AnimatePresence>
         </div>

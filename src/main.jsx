@@ -6,20 +6,23 @@ import App from "./App"
 import { ThemeProvider } from "./context/ThemeContext"
 import { I18nProvider } from "./context/I18nContext"
 import { ToastProvider } from "./context/ToastContext"
+import { DataProvider } from "./context/DataContext"
 import "./index.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HelmetProvider>
-      <ThemeProvider>
-        <I18nProvider>
-          <ToastProvider>
-            <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-              <App />
-            </BrowserRouter>
-          </ToastProvider>
-        </I18nProvider>
-      </ThemeProvider>
+      <DataProvider>
+        <ThemeProvider>
+          <I18nProvider>
+            <ToastProvider>
+              <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+                <App />
+              </BrowserRouter>
+            </ToastProvider>
+          </I18nProvider>
+        </ThemeProvider>
+      </DataProvider>
     </HelmetProvider>
   </React.StrictMode>
 )

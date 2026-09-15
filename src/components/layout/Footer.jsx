@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, Twitter, Send } from "lucide-react"
 import { ASSETS, onImgError } from "../../data/images"
 import { useI18n } from "../../context/I18nContext"
+import { useData } from "../../context/DataContext"
 
 const quickLinks = [
   { to: "/about", label: "About Us" },
@@ -21,6 +22,7 @@ export default function Footer() {
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
   const { t } = useI18n()
+  const { schoolInfo } = useData()
 
   const handleSubscribe = (e) => {
     e.preventDefault()
@@ -60,22 +62,24 @@ export default function Footer() {
               />
               <div>
                 <h3 className="font-poppins font-bold text-lg">Golden Crown School</h3>
-                <p className="text-crown-gold text-sm font-medium">{t("footer.tagline")}</p>
+                <p className="text-crown-gold text-sm font-medium">{schoolInfo?.motto || t("footer.tagline")}</p>
               </div>
             </div>
             <ul className="space-y-3 text-sm text-white/80">
               <li className="flex items-start gap-2">
                 <MapPin size={18} className="text-crown-gold shrink-0 mt-0.5" />
-                <span>MXM6+VVC, Lashibi, Greater Accra, Ghana</span>
+                <span>{schoolInfo?.address || "MXM6+VVC, Lashibi, Greater Accra, Ghana"}</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={18} className="text-crown-gold shrink-0" />
-                <a href="tel:+233555553729" className="hover:text-white">+233 55 555 3729</a>
+                <a href={`tel:${schoolInfo?.phone || "+233555553729"}`} className="hover:text-white">
+                  {schoolInfo?.phone || "+233 55 555 3729"}
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={18} className="text-crown-gold shrink-0" />
-                <a href="mailto:info@goldencrownschool.edu.gh" className="hover:text-white break-all">
-                  info@goldencrownschool.edu.gh
+                <a href={`mailto:${schoolInfo?.email || "info@goldencrownschool.edu.gh"}`} className="hover:text-white break-all">
+                  {schoolInfo?.email || "info@goldencrownschool.edu.gh"}
                 </a>
               </li>
             </ul>

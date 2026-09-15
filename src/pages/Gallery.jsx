@@ -12,22 +12,20 @@ import PageBanner from "../components/ui/PageBanner"
 import GallerySpotlight from "../components/gallery/GallerySpotlight"
 import KineticMarquee from "../components/gallery/KineticMarquee"
 import SEO from "../components/ui/SEO"
-import {
-  GALLERY_CATEGORIES,
-  GALLERY_ITEMS,
-  SPOTLIGHT_STORIES,
-} from "../data/galleryData"
+import { useData } from "../context/DataContext"
+import { GALLERY_CATEGORIES } from "../data/galleryData"
 import { onImgError } from "../data/images"
 
 export default function Gallery() {
+  const { gallery, spotlight } = useData()
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [activeLightbox, setActiveLightbox] = useState(null) // { item, imgIndex }
 
   // Filter items based on selected category
   const filteredItems =
     selectedCategory === "All"
-      ? GALLERY_ITEMS
-      : GALLERY_ITEMS.filter((item) => item.category === selectedCategory)
+      ? gallery
+      : gallery.filter((item) => item.category === selectedCategory)
 
   // Lightbox handlers
   const openLightbox = (item, imgIndex = 0) => {
@@ -115,7 +113,7 @@ export default function Gallery() {
 
           {/* 1. Cinematic Auto-Changing Spotlight Showcase */}
           <GallerySpotlight
-            items={SPOTLIGHT_STORIES}
+            items={spotlight}
             onOpenLightbox={(spotlightItem) =>
               openLightbox({
                 ...spotlightItem,

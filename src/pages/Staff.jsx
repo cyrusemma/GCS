@@ -3,9 +3,10 @@ import PageBanner from "../components/ui/PageBanner"
 import SectionTitle from "../components/ui/SectionTitle"
 import StaffCard from "../components/ui/StaffCard"
 import SEO from "../components/ui/SEO"
-import { leadership, teachers } from "../data/staff"
+import { useData } from "../context/DataContext"
 
 export default function Staff() {
+  const { leadership, teachers } = useData()
   return (
     <>
       <SEO

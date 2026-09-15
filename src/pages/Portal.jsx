@@ -1,20 +1,25 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
-import { Eye, EyeOff, ClipboardList, CreditCard, Bell, ArrowRight } from "lucide-react"
+import { Eye, EyeOff, ClipboardList, CreditCard, Bell, ArrowRight, ShieldCheck } from "lucide-react"
 import SEO from "../components/ui/SEO"
 import { ASSETS, onImgError } from "../data/images"
 
 const roles = ["Student", "Parent", "Staff"]
 
 export default function Portal() {
+  const navigate = useNavigate()
   const [role, setRole] = useState("Student")
   const [showPw, setShowPw] = useState(false)
   const [notice, setNotice] = useState("")
 
   const handleLogin = (e) => {
     e.preventDefault()
-    setNotice("The online portal is coming soon. This is a demo login — thank you for your patience!")
+    if (role === "Staff") {
+      navigate("/admin")
+      return
+    }
+    setNotice("The online student/parent portal is coming soon. Thank you for your patience!")
   }
 
   return (
