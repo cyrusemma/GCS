@@ -21,6 +21,17 @@ html.dark body {
   color: #e2e8f0;
 }
 
+/* Scoped desktop custom cursor (leaves input/textarea native for natural typing) */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor [role="button"],
+  body.has-custom-cursor label {
+    cursor: none;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
