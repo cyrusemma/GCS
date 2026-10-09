@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, Twitter, Send, Music2 } from "lucide-react"
+import { MapPin, Phone, Mail, Send } from "lucide-react"
 import { ASSETS, onImgError } from "../../data/images"
 import { useI18n } from "../../context/I18nContext"
 import { useData } from "../../context/DataContext"
@@ -119,25 +119,20 @@ export default function Footer() {
             <p className="text-sm text-white/80 mb-1">Third Term — 2024/2025</p>
             <p className="text-sm text-white/80 mb-5">School Hours: Mon–Fri, 7:00am – 5:00pm</p>
 
-            <div className="flex items-center gap-3 mb-6">
-              {[
-                { Icon: Facebook, label: "Facebook", href: "#" },
-                { Icon: Instagram, label: "Instagram", href: "#" },
-                { Icon: Youtube, label: "YouTube", href: "#" },
-                { Icon: Twitter, label: "Twitter", href: "#" },
-                { Icon: Music2, label: "TikTok", href: "https://www.tiktok.com/@goldencrownschool" },
-              ].map(({ Icon, label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href !== "#" ? "_blank" : undefined}
-                  rel={href !== "#" ? "noopener noreferrer" : undefined}
-                  aria-label={`Golden Crown School on ${label}`}
-                  className="h-9 w-9 inline-flex items-center justify-center rounded-full bg-white/10 hover:bg-crown-gold hover:text-crown-blue-dark transition-colors"
-                >
-                  <Icon size={18} />
-                </a>
-              ))}
+            <div className="mb-6">
+              <p className="text-xs text-white/60 uppercase tracking-wider mb-2 font-medium">Follow Us</p>
+              <a
+                href="https://www.tiktok.com/@goldencrownschool"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Golden Crown School on TikTok"
+                className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-crown-gold hover:text-crown-blue-dark text-white text-sm font-medium transition-all border border-white/10 hover:border-crown-gold"
+              >
+                <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
+                </svg>
+                <span>@goldencrownschool</span>
+              </a>
             </div>
 
             <h4 className="font-poppins font-semibold text-crown-gold mb-3">{t("footer.newsletter")}</h4>
