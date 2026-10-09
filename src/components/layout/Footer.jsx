@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, Twitter, Send } from "lucide-react"
+import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, Twitter, Send, Music2 } from "lucide-react"
 import { ASSETS, onImgError } from "../../data/images"
 import { useI18n } from "../../context/I18nContext"
 import { useData } from "../../context/DataContext"
@@ -78,8 +78,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={18} className="text-crown-gold shrink-0" />
-                <a href={`mailto:${schoolInfo?.email || "info@goldencrownschool.edu.gh"}`} className="hover:text-white break-all">
-                  {schoolInfo?.email || "info@goldencrownschool.edu.gh"}
+                <a href={`mailto:${schoolInfo?.email || "info@goldencrownschool.org"}`} className="hover:text-white break-all">
+                  {schoolInfo?.email || "info@goldencrownschool.org"}
                 </a>
               </li>
             </ul>
@@ -121,14 +121,17 @@ export default function Footer() {
 
             <div className="flex items-center gap-3 mb-6">
               {[
-                { Icon: Facebook, label: "Facebook" },
-                { Icon: Instagram, label: "Instagram" },
-                { Icon: Youtube, label: "YouTube" },
-                { Icon: Twitter, label: "Twitter" },
-              ].map(({ Icon, label }) => (
+                { Icon: Facebook, label: "Facebook", href: "#" },
+                { Icon: Instagram, label: "Instagram", href: "#" },
+                { Icon: Youtube, label: "YouTube", href: "#" },
+                { Icon: Twitter, label: "Twitter", href: "#" },
+                { Icon: Music2, label: "TikTok", href: "https://www.tiktok.com/@goldencrownschool" },
+              ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target={href !== "#" ? "_blank" : undefined}
+                  rel={href !== "#" ? "noopener noreferrer" : undefined}
                   aria-label={`Golden Crown School on ${label}`}
                   className="h-9 w-9 inline-flex items-center justify-center rounded-full bg-white/10 hover:bg-crown-gold hover:text-crown-blue-dark transition-colors"
                 >
@@ -166,7 +169,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/70">
           <p>© 2025 Golden Crown School, Lashibi. {t("footer.rights")}</p>
-          <p className="text-crown-gold">www.goldencrownschool.edu.gh</p>
+          <p className="text-crown-gold">www.goldencrownschool.org</p>
         </div>
       </div>
     </footer>
