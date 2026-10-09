@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async"
 
 const SITE_NAME = "Golden Crown School"
-const SITE_URL = "https://www.goldencrownschool.edu.gh"
+const SITE_URL = "https://www.goldencrownschool.org"
 const DEFAULT_DESC =
   "Golden Crown School, Lashibi — a KG to JHS basic school in Tema, Greater Accra, Ghana. Established 2004. Hardwork and Integrity."
 const OG_IMAGE = `${SITE_URL}/favicon-256.png`
