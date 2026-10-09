@@ -54,10 +54,10 @@ export default function Staff() {
             We'd love to hear from you. Send your CV and we'll be in touch.
           </p>
           <a
-            href="mailto:info@goldencrownschool.edu.gh?subject=Teaching%20Application"
+            href="mailto:info@goldencrownschool.org?subject=Teaching%20Application"
             className="inline-flex items-center gap-2 bg-crown-gold hover:bg-crown-gold-light text-crown-blue-dark font-semibold px-7 py-3 rounded-full transition-colors"
           >
-            <Mail size={18} /> Send CV to info@goldencrownschool.edu.gh
+            <Mail size={18} /> Send CV to info@goldencrownschool.org
           </a>
         </div>
       </section>
