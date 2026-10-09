@@ -119,8 +119,29 @@ export default function Hero() {
     }
   }, [])
 
+  const [cursor, setCursor] = useState({ x: 0, y: 0, active: false })
+
+  const handlePointerMove = (e) => {
+    const rect = root.current?.getBoundingClientRect()
+    if (!rect) return
+    setCursor({
+      x: Math.round(e.clientX - rect.left),
+      y: Math.round(e.clientY - rect.top),
+      active: true,
+    })
+  }
+
+  const handlePointerLeave = () => {
+    setCursor((prev) => ({ ...prev, active: false }))
+  }
+
   return (
-    <section ref={root} className="relative h-screen min-h-[600px] w-full overflow-hidden">
+    <section
+      ref={root}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      className="relative h-screen min-h-[600px] w-full overflow-hidden select-none"
+    >
       {/* Background: campus video if available, else the building photo */}
       {hasVideo ? (
         <video
@@ -141,7 +162,39 @@ export default function Hero() {
           className="absolute inset-0 w-full h-full object-cover"
         />
       )}
-      <div className="absolute inset-0" style={{ backgroundColor: "rgba(13, 71, 161, 0.75)" }} />
+
+      {/* Golden-infused overlay with interactive flashlight reveal under cursor */}
+      <div
+        className="absolute inset-0 pointer-events-none transition-[opacity] duration-300"
+        style={{
+          background: `
+            radial-gradient(ellipse at 50% 35%, rgba(212, 175, 55, 0.35) 0%, rgba(184, 134, 11, 0.22) 45%, rgba(10, 22, 45, 0.68) 100%),
+            linear-gradient(180deg, rgba(212, 175, 55, 0.25) 0%, rgba(10, 25, 47, 0.35) 40%, rgba(10, 20, 38, 0.65) 100%)
+          `,
+          WebkitMaskImage: cursor.active
+            ? `radial-gradient(circle 260px at ${cursor.x}px ${cursor.y}px, transparent 0%, transparent 40%, rgba(0,0,0,0.4) 70%, black 100%)`
+            : "none",
+          maskImage: cursor.active
+            ? `radial-gradient(circle 260px at ${cursor.x}px ${cursor.y}px, transparent 0%, transparent 40%, rgba(0,0,0,0.4) 70%, black 100%)`
+            : "none",
+        }}
+      />
+
+      {/* Subtle luxury golden spotlight halo following cursor */}
+      {cursor.active && (
+        <div
+          className="absolute pointer-events-none rounded-full -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300"
+          style={{
+            left: cursor.x,
+            top: cursor.y,
+            width: 520,
+            height: 520,
+            background:
+              "radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 50%, transparent 70%)",
+            boxShadow: "inset 0 0 30px rgba(212, 175, 55, 0.15)",
+          }}
+        />
+      )}
 
       <ParticleField />
 
@@ -151,26 +204,26 @@ export default function Hero() {
         onError={onImgError}
         alt=""
         aria-hidden="true"
-        className="absolute bottom-6 right-6 w-40 lg:w-64 opacity-15 pointer-events-none"
+        className="absolute bottom-6 right-6 w-40 lg:w-64 opacity-20 pointer-events-none"
       />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-        <span className="hero-line block h-1 w-24 bg-crown-gold rounded-full mb-6" />
-        <p className="hero-welcome text-white/90 tracking-[0.3em] uppercase text-sm sm:text-base mb-3">
+        <span className="hero-line block h-1 w-24 bg-crown-gold rounded-full mb-6 shadow-md" />
+        <p className="hero-welcome text-white tracking-[0.3em] uppercase text-sm sm:text-base mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] font-medium">
           {t("hero.welcome")}
         </p>
-        <h1 className="font-poppins font-bold text-white text-4xl sm:text-6xl lg:text-7xl leading-tight flex flex-wrap justify-center gap-x-4">
+        <h1 className="font-poppins font-bold text-white text-4xl sm:text-6xl lg:text-7xl leading-tight flex flex-wrap justify-center gap-x-4 drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)]">
           {t("hero.school").split(" ").map((word, i) => (
             <span key={i} className="inline-block overflow-hidden pb-1">
               <span className="hero-word inline-block">{word}</span>
             </span>
           ))}
         </h1>
-        <p className="hero-location font-poppins text-crown-gold text-xl sm:text-2xl mt-3">
+        <p className="hero-location font-poppins text-crown-gold text-xl sm:text-2xl mt-3 font-semibold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
           {t("hero.location")}
         </p>
-        <p className="mt-4 text-white/90 text-lg sm:text-xl italic min-h-[1.75rem]">
+        <p className="mt-4 text-white text-lg sm:text-xl italic min-h-[1.75rem] drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
           “{typed}
           <span className="animate-pulse">|</span>”
         </p>
