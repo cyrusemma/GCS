@@ -7,8 +7,8 @@ export const schoolInfo = {
   location: "Lashibi, Tema Metropolitan, Greater Accra Region, Ghana",
   address: "MXM6+VVC, Lashibi, Greater Accra, Ghana",
   phone: "+233 55 555 3729",
-  email: "info@goldencrownschool.edu.gh",
-  website: "www.goldencrownschool.edu.gh",
+  email: "info@goldencrownschool.org",
+  website: "www.goldencrownschool.org",
   students: 200,
   staff: 22,
   vision:
