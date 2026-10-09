@@ -21,19 +21,6 @@ html.dark body {
   color: #e2e8f0;
 }
 
-/* Hide the native cursor when the custom cursor is active (desktop only) */
-@media (pointer: fine) {
-  body.has-custom-cursor,
-  body.has-custom-cursor a,
-  body.has-custom-cursor button,
-  body.has-custom-cursor input,
-  body.has-custom-cursor textarea,
-  body.has-custom-cursor select,
-  body.has-custom-cursor label {
-    cursor: none;
-  }
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
