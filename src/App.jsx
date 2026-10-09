@@ -8,7 +8,6 @@ import PageWrapper from "./components/layout/PageWrapper"
 import WhatsAppButton from "./components/ui/WhatsAppButton"
 import Preloader from "./components/ui/Preloader"
 import RouteCurtain from "./components/ui/RouteCurtain"
-import CustomCursor from "./components/ui/CustomCursor"
 import BackgroundWatermark from "./components/ui/BackgroundWatermark"
 
 import Home from "./pages/Home"
@@ -46,7 +45,6 @@ export default function App() {
     <div className="font-poppins relative flex flex-col min-h-screen bg-crown-white dark:bg-[#0a1124] transition-colors overflow-x-hidden">
       <BackgroundWatermark />
       <Preloader />
-      <CustomCursor />
       <RouteCurtain />
       <ScrollToTop />
       <div className="relative z-10 flex flex-col min-h-screen">

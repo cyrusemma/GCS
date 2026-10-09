@@ -22,7 +22,7 @@ import { useI18n } from "../../context/I18nContext"
 import MagneticButton from "../ui/MagneticButton"
 import MobileMenuDrawer from "./MobileMenuDrawer"
 
-// Categorized navigation structure with rich sub-items
+// Categorized navigation structure
 const navStructure = [
   {
     type: "link",
@@ -129,7 +129,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  // Close menus on route navigation
+  // Close menus on route change
   useEffect(() => {
     setOpen(false)
     setActiveDropdown(null)
@@ -153,10 +153,10 @@ export default function Navbar() {
     }, 180)
   }
 
-  const iconBtn = `inline-flex items-center justify-center h-10 w-10 rounded-full border transition-all duration-300 transform hover:scale-110 hover:shadow-[0_0_15px_rgba(212,175,55,0.45)] ${
+  const iconBtn = `inline-flex items-center justify-center h-9 w-9 rounded-full border transition-colors duration-200 ${
     solid
-      ? "border-crown-blue/20 dark:border-slate-700 text-crown-blue dark:text-slate-200 hover:bg-crown-gold hover:text-crown-blue-dark hover:border-crown-gold"
-      : "border-white/50 text-white hover:bg-crown-gold hover:text-crown-blue-dark hover:border-crown-gold"
+      ? "border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-200 hover:text-crown-gold hover:border-crown-gold"
+      : "border-white/40 text-white hover:text-crown-gold hover:border-crown-gold"
   }`
 
   return (
@@ -167,8 +167,8 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
           solid
-            ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-md hover:shadow-[0_12px_35px_rgba(212,175,55,0.15)]"
-            : "bg-transparent hover:backdrop-blur-sm"
+            ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm"
+            : "bg-transparent"
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -176,54 +176,63 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               to="/"
-              className="flex items-center gap-3 shrink-0 group transition-transform duration-300 hover:scale-105"
+              className="flex items-center gap-3 shrink-0 group transition-opacity duration-200 hover:opacity-95"
             >
               <img
                 src={ASSETS.badge}
                 onError={onImgError}
                 alt="Golden Crown School badge"
-                className="h-11 w-11 sm:h-12 sm:w-12 object-contain transition-transform duration-300 group-hover:rotate-6 drop-shadow"
-              ></img>
+                className="h-11 w-11 sm:h-12 sm:w-12 object-contain drop-shadow"
+              />
               <span
-                className={`hidden sm:block font-poppins font-bold leading-tight text-base lg:text-lg transition-colors ${
+                className={`hidden sm:block font-poppins font-bold leading-tight text-base lg:text-lg transition-colors duration-200 ${
                   solid ? "text-crown-blue dark:text-white" : "text-white"
                 } group-hover:text-crown-gold`}
               >
                 Golden Crown
-                <span className="block text-[11px] font-medium tracking-wide opacity-80 group-hover:text-crown-gold-light">
+                <span className="block text-[11px] font-medium tracking-wide opacity-80">
                   School, Lashibi
                 </span>
               </span>
             </Link>
 
-            {/* Desktop Categorized Navigation with Zoom & Hover Glow */}
-            <div className="hidden lg:flex items-center gap-1.5 xl:gap-2">
+            {/* Desktop Categorized Navigation (Simple, Classy & Subtle Animations) */}
+            <div className="hidden lg:flex items-center gap-1 xl:gap-2">
               {navStructure.map((item) => {
                 if (item.type === "link") {
-                  const isActive =
-                    item.to === "/"
-                      ? location.pathname === "/"
-                      : location.pathname.startsWith(item.to)
-
                   return (
                     <NavLink
                       key={item.to}
                       to={item.to}
                       end={item.to === "/"}
-                      className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center ${
-                        isActive
-                          ? "bg-crown-gold/20 text-crown-gold font-semibold shadow-[0_0_16px_rgba(212,175,55,0.35)] border border-crown-gold/40"
-                          : solid
-                          ? "text-gray-700 dark:text-slate-200 hover:text-crown-gold hover:bg-crown-gold/15 hover:shadow-[0_0_18px_rgba(212,175,55,0.4)] border border-transparent hover:border-crown-gold/30"
-                          : "text-white/90 hover:text-white hover:bg-white/15 hover:shadow-[0_0_20px_rgba(212,175,55,0.45)] border border-transparent hover:border-crown-gold/40"
-                      }`}
+                      className={({ isActive }) =>
+                        `group relative px-3.5 py-2 text-sm font-medium transition-colors duration-200 flex items-center ${
+                          isActive
+                            ? "text-crown-gold font-semibold"
+                            : solid
+                            ? "text-gray-700 dark:text-slate-200 hover:text-crown-gold"
+                            : "text-white/90 hover:text-white"
+                        }`
+                      }
                     >
-                      <span>{t(`nav.${item.labelKey}`) || item.defaultLabel}</span>
+                      {({ isActive }) => (
+                        <>
+                          <span>{t(`nav.${item.labelKey}`) || item.defaultLabel}</span>
+                          {/* Subtle gold underline animation */}
+                          <span
+                            className={`absolute bottom-0.5 left-3 right-3 h-[2px] bg-crown-gold rounded-full transition-transform duration-250 ease-out origin-center ${
+                              isActive
+                                ? "scale-x-100"
+                                : "scale-x-0 group-hover:scale-x-100"
+                            }`}
+                          />
+                        </>
+                      )}
                     </NavLink>
                   )
                 }
 
-                // Dropdown trigger & menu
+                // Dropdown item
                 const isDropdownOpen = activeDropdown === item.id
                 const isChildActive = item.matchPaths?.some((p) =>
                   location.pathname.startsWith(p)
@@ -242,37 +251,47 @@ export default function Navbar() {
                         setActiveDropdown((curr) => (curr === item.id ? null : item.id))
                       }
                       aria-expanded={isDropdownOpen}
-                      className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-1.5 cursor-pointer ${
+                      className={`group relative px-3.5 py-2 text-sm font-medium transition-colors duration-200 flex items-center gap-1.5 cursor-pointer ${
                         isChildActive || isDropdownOpen
-                          ? "bg-crown-gold/20 text-crown-gold font-semibold shadow-[0_0_16px_rgba(212,175,55,0.35)] border border-crown-gold/40"
+                          ? "text-crown-gold font-semibold"
                           : solid
-                          ? "text-gray-700 dark:text-slate-200 hover:text-crown-gold hover:bg-crown-gold/15 hover:shadow-[0_0_18px_rgba(212,175,55,0.4)] border border-transparent hover:border-crown-gold/30"
-                          : "text-white/90 hover:text-white hover:bg-white/15 hover:shadow-[0_0_20px_rgba(212,175,55,0.45)] border border-transparent hover:border-crown-gold/40"
+                          ? "text-gray-700 dark:text-slate-200 hover:text-crown-gold"
+                          : "text-white/90 hover:text-white"
                       }`}
                     >
                       <span>{item.defaultLabel}</span>
                       <ChevronDown
-                        size={15}
-                        className={`transition-transform duration-300 ${
-                          isDropdownOpen ? "rotate-180 text-crown-gold" : "opacity-70"
+                        size={14}
+                        className={`transition-transform duration-200 ease-out ${
+                          isDropdownOpen
+                            ? "rotate-180 text-crown-gold"
+                            : "opacity-70 group-hover:text-crown-gold group-hover:opacity-100"
+                        }`}
+                      />
+                      {/* Subtle gold underline animation */}
+                      <span
+                        className={`absolute bottom-0.5 left-3 right-3 h-[2px] bg-crown-gold rounded-full transition-transform duration-250 ease-out origin-center ${
+                          isChildActive || isDropdownOpen
+                            ? "scale-x-100"
+                            : "scale-x-0 group-hover:scale-x-100"
                         }`}
                       />
                     </button>
 
-                    {/* Exquisite Floating Dropdown Panel */}
+                    {/* Classy Floating Dropdown Menu */}
                     <AnimatePresence>
                       {isDropdownOpen && (
                         <motion.div
-                          initial={{ opacity: 0, y: 12, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                          className={`absolute top-full left-0 mt-2 z-50 rounded-2xl p-2.5 shadow-[0_20px_60px_rgba(13,71,161,0.22),0_4px_16px_rgba(0,0,0,0.1)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.7)] backdrop-blur-2xl border border-crown-gold/30 dark:border-crown-gold/25 bg-white/95 dark:bg-slate-900/95 min-w-[280px] sm:min-w-[320px]`}
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 6 }}
+                          transition={{ duration: 0.18, ease: "easeOut" }}
+                          className="absolute top-full left-0 mt-2 z-50 rounded-2xl p-2 shadow-xl backdrop-blur-xl border border-gray-100 dark:border-slate-800 bg-white/98 dark:bg-slate-900/98 min-w-[280px] sm:min-w-[310px]"
                         >
-                          {/* Golden jewel top accent line */}
-                          <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-crown-gold to-transparent mb-2 rounded-full" />
+                          {/* Delicate gold accent top hairline */}
+                          <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-crown-gold/70 to-transparent mb-1.5 rounded-full" />
 
-                          <div className="space-y-1">
+                          <div className="space-y-0.5">
                             {item.items.map((sub) => {
                               const SubIcon = sub.icon
                               const isSubActive = location.pathname.startsWith(sub.to)
@@ -282,35 +301,35 @@ export default function Navbar() {
                                   key={sub.to}
                                   to={sub.to}
                                   onClick={() => setActiveDropdown(null)}
-                                  className={`group flex items-start gap-3 p-3 rounded-xl transition-all duration-200 ${
+                                  className={`group flex items-start gap-3 p-2.5 rounded-xl transition-colors duration-150 ${
                                     isSubActive
-                                      ? "bg-crown-gold/15 text-crown-gold-dark dark:text-crown-gold shadow-sm"
-                                      : "hover:bg-crown-gold/10 text-gray-800 dark:text-slate-100"
+                                      ? "bg-crown-gold/10 text-crown-gold"
+                                      : "hover:bg-gray-50 dark:hover:bg-slate-800/70 text-gray-800 dark:text-slate-100"
                                   }`}
                                 >
-                                  {/* Icon badge */}
+                                  {/* Icon */}
                                   <div
-                                    className={`p-2.5 rounded-xl shrink-0 transition-all duration-300 ${
+                                    className={`p-2 rounded-lg shrink-0 transition-colors duration-150 ${
                                       isSubActive
-                                        ? "bg-crown-gold text-crown-blue-dark shadow-[0_0_12px_rgba(212,175,55,0.5)]"
-                                        : "bg-crown-blue/5 dark:bg-slate-800 text-crown-blue dark:text-crown-gold group-hover:bg-crown-gold group-hover:text-crown-blue-dark group-hover:scale-110 group-hover:shadow-[0_0_14px_rgba(212,175,55,0.45)]"
+                                        ? "bg-crown-gold text-crown-blue-dark"
+                                        : "bg-crown-blue/5 dark:bg-slate-800 text-crown-blue dark:text-crown-gold group-hover:bg-crown-gold/15 group-hover:text-crown-gold"
                                     }`}
                                   >
-                                    <SubIcon size={18} />
+                                    <SubIcon size={16} />
                                   </div>
 
-                                  {/* Content & Arrow */}
+                                  {/* Text & indicator */}
                                   <div className="flex-1 min-w-0">
                                     <div className="flex items-center justify-between">
-                                      <p className="font-poppins font-semibold text-sm group-hover:text-crown-gold transition-colors">
+                                      <p className="font-poppins font-medium text-sm group-hover:text-crown-gold transition-colors duration-150">
                                         {sub.title}
                                       </p>
                                       <ArrowRight
-                                        size={14}
-                                        className="text-crown-gold opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+                                        size={13}
+                                        className="text-crown-gold opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
                                       />
                                     </div>
-                                    <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5 leading-snug line-clamp-1 group-hover:text-gray-700 dark:group-hover:text-slate-300">
+                                    <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5 leading-snug line-clamp-1">
                                       {sub.desc}
                                     </p>
                                   </div>
@@ -334,12 +353,12 @@ export default function Navbar() {
                 aria-label="Toggle dark mode"
                 className={iconBtn}
               >
-                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
               </button>
 
               <MagneticButton
                 to="/admissions"
-                className="hidden sm:inline-flex items-center bg-crown-gold hover:bg-crown-gold-light text-crown-blue-dark font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] transform hover:scale-105 active:scale-95"
+                className="hidden sm:inline-flex items-center bg-crown-gold hover:bg-crown-gold-light text-crown-blue-dark font-semibold text-sm px-4 py-2 rounded-full transition-all duration-200 shadow-sm hover:shadow"
               >
                 {t("nav.apply")}
               </MagneticButton>
@@ -349,14 +368,14 @@ export default function Navbar() {
                 aria-label="Open the student and parent portal"
                 className={iconBtn}
               >
-                <LogIn size={18} />
+                <LogIn size={17} />
               </Link>
 
               {/* Animated Hamburger Button for mobile & tablet */}
               <button
                 onClick={() => setOpen((v) => !v)}
                 aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-                className={`lg:hidden relative inline-flex items-center justify-center h-10 w-10 rounded-xl transition-all duration-300 ${
+                className={`lg:hidden relative inline-flex items-center justify-center h-9 w-9 rounded-xl transition-colors duration-200 ${
                   solid
                     ? "bg-gray-100 dark:bg-slate-800 text-crown-blue dark:text-white"
                     : "bg-white/15 text-white backdrop-blur-sm"
