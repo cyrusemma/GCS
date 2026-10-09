@@ -122,6 +122,8 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const { t } = useI18n()
 
+  const navRef = useRef(null)
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     onScroll()
@@ -134,6 +136,27 @@ export default function Navbar() {
     setOpen(false)
     setActiveDropdown(null)
   }, [location.pathname])
+
+  // Close dropdown when clicking outside or pressing Escape
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setActiveDropdown(null)
+      }
+    }
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setActiveDropdown(null)
+        setOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    document.addEventListener("keydown", handleKeyDown)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [])
 
   const isHome = location.pathname === "/"
   const solid = scrolled || !isHome || open
@@ -162,12 +185,13 @@ export default function Navbar() {
   return (
     <>
       <motion.header
+        ref={navRef}
         initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           solid
-            ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm"
+            ? "bg-white dark:bg-[#0c1427] border-b border-gray-200/80 dark:border-slate-800 shadow-sm"
             : "bg-transparent"
         }`}
       >
@@ -286,7 +310,7 @@ export default function Navbar() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 6 }}
                           transition={{ duration: 0.18, ease: "easeOut" }}
-                          className="absolute top-full left-0 mt-2 z-50 rounded-2xl p-2 shadow-xl backdrop-blur-xl border border-gray-100 dark:border-slate-800 bg-white/98 dark:bg-slate-900/98 min-w-[280px] sm:min-w-[310px]"
+                          className="absolute top-full left-0 mt-2 z-[60] rounded-2xl p-2.5 shadow-2xl shadow-black/25 border border-gray-200 dark:border-slate-700 bg-white dark:bg-[#0c1427] min-w-[285px] sm:min-w-[315px]"
                         >
                           {/* Delicate gold accent top hairline */}
                           <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-crown-gold/70 to-transparent mb-1.5 rounded-full" />

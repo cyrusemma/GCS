@@ -109,7 +109,7 @@ export default function MobileMenuDrawer({ isOpen, onClose }) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 xl:hidden">
+        <div className="fixed inset-0 z-[70] xl:hidden">
           {/* Backdrop blur overlay */}
           <motion.div
             variants={backdropVariants}
