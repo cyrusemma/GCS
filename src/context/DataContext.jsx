@@ -8,7 +8,7 @@ const STORAGE_KEY = "gcs_cms_data_v1"
 const defaultSchoolInfo = {
   phone: "024 316 9383",
   altPhone: "020 812 3456",
-  email: "info@goldencrownschool.edu.gh",
+  email: "info@goldencrownschool.org",
   address: "Lashibi Community 20, Greater Accra, Ghana",
   becePassRate: "94%",
   studentsEnrolled: "450+",
