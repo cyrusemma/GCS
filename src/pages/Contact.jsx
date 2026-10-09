@@ -14,7 +14,7 @@ const inputClass =
 const infoCards = [
   { Icon: MapPin, title: "Visit Us", text: "MXM6+VVC, Lashibi, Greater Accra Region, Ghana" },
   { Icon: Phone, title: "Call Us", text: "+233 55 555 3729", href: "tel:+233555553729" },
-  { Icon: Mail, title: "Email Us", text: "info@goldencrownschool.edu.gh", href: "mailto:info@goldencrownschool.edu.gh" },
+  { Icon: Mail, title: "Email Us", text: "info@goldencrownschool.org", href: "mailto:info@goldencrownschool.org" },
 ]
 
 export default function Contact() {
@@ -61,7 +61,7 @@ export default function Contact() {
       <SEO
         title="Contact Us"
         path="/contact"
-        description="Contact Golden Crown School, Lashibi — call +233 55 555 3729, email info@goldencrownschool.edu.gh, or send a message. Office hours Mon–Fri 7am–5pm."
+        description="Contact Golden Crown School, Lashibi — call +233 55 555 3729, email info@goldencrownschool.org, or send a message. Office hours Mon–Fri 7am–5pm."
       />
       <PageBanner
         title="Contact Us"
