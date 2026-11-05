@@ -22,7 +22,7 @@ export default function WelcomeSection() {
               Golden Crown School is a private basic school in Lashibi, within the Tema
               Metropolitan area of Greater Accra, Ghana. Founded in 2004, we have been
               nurturing young learners from Nursery through Junior High School, guided
-              always by our enduring motto: <strong className="text-crown-blue">Hardwork and Integrity</strong>.
+              always by our enduring motto: <strong className="text-crown-blue">Hard Work and Integrity</strong>.
             </p>
             <p>
               We combine a rigorous, GES-aligned academic programme with strong moral and character

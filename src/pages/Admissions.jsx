@@ -1101,7 +1101,7 @@ export default function Admissions() {
                   Golden Crown School, Lashibi
                 </h3>
                 <p className="text-xs text-gray-500 dark:text-slate-400">
-                  Motto: Hardwork and Integrity • Lashibi, Greater Accra, Ghana
+                  Motto: Hard Work and Integrity • Lashibi, Greater Accra, Ghana
                 </p>
                 <h4 className="mt-2 font-poppins font-semibold text-sm uppercase tracking-wider text-crown-gold-dark dark:text-crown-gold">
                   Official Admission Application Form

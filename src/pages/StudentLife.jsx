@@ -23,7 +23,7 @@ export default function StudentLife() {
       <SEO
         title="Student Life"
         path="/student-life"
-        description="Clubs, cultural activities, and student life at Golden Crown School, Lashibi — guided by our core values of Hardwork, Integrity, Discipline, Excellence, and Respect."
+        description="Clubs, cultural activities, and student life at Golden Crown School, Lashibi — guided by our core values of Hard Work, Integrity, Discipline, Excellence, and Respect."
       />
       <PageBanner
         title="Student Life"
@@ -37,7 +37,7 @@ export default function StudentLife() {
           <SectionTitle title="Life at Golden Crown School" />
           <p className="text-gray-600 dark:text-slate-300 leading-relaxed text-lg">
             Student life at Golden Crown School is guided by our core values of{" "}
-            <strong className="text-crown-blue dark:text-crown-gold">Hardwork, Integrity, Discipline, Excellence, and Respect</strong>.
+            <strong className="text-crown-blue dark:text-crown-gold">Hard Work, Integrity, Discipline, Excellence, and Respect</strong>.
             Our students participate in cultural events, academic competitions, and club activities that complement their classroom learning.
           </p>
         </div>

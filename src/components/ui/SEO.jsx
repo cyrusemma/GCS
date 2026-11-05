@@ -3,12 +3,12 @@ import { Helmet } from "react-helmet-async"
 const SITE_NAME = "Golden Crown School"
 const SITE_URL = "https://www.goldencrownschool.org"
 const DEFAULT_DESC =
-  "Golden Crown School, Lashibi — a KG to JHS basic school in Tema, Greater Accra, Ghana. Established 2004. Hardwork and Integrity."
+  "Golden Crown School, Lashibi — a KG to JHS basic school in Tema, Greater Accra, Ghana. Established 2004. Hard Work and Integrity."
 const OG_IMAGE = `${SITE_URL}/favicon-256.png`
 
 // Per-page SEO: title, description, canonical, Open Graph + Twitter cards.
 export default function SEO({ title, description = DEFAULT_DESC, path = "/", image = OG_IMAGE }) {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME}, Lashibi — Hardwork and Integrity`
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME}, Lashibi — Hard Work and Integrity`
   const url = `${SITE_URL}${path}`
   return (
     <Helmet>

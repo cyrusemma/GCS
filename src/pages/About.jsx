@@ -17,11 +17,11 @@ const milestones = [
   { year: "2016", text: "First cohort records outstanding BECE results, placing students in top senior highs." },
   { year: "2020", text: "Campus modernisation and adoption of the GES standards-based curriculum." },
   { year: "2024", text: "New state-of-the-art Computing Laboratory commissioned, expanding digital skills across all levels." },
-  { year: "2025", text: "The school proudly celebrates 21 years of Hardwork and Integrity." },
+  { year: "2025", text: "The school proudly celebrates 21 years of Hard Work and Integrity." },
 ]
 
 const values = [
-  { Icon: Award, label: "Hardwork" },
+  { Icon: Award, label: "Hard Work" },
   { Icon: Shield, label: "Integrity" },
   { Icon: Star, label: "Discipline" },
   { Icon: Trophy, label: "Excellence" },
@@ -44,7 +44,7 @@ export default function About() {
       />
       <PageBanner
         title="About Our School"
-        subtitle="A legacy of Hardwork and Integrity since 2004."
+        subtitle="A legacy of Hard Work and Integrity since 2004."
         breadcrumb="About"
       />
 
@@ -168,7 +168,7 @@ export default function About() {
                 disciplined, capable, and compassionate young people."
               </p>
               <p>
-                "Our motto, Hardwork and Integrity, is more than words — it is the standard we hold
+                "Our motto, Hard Work and Integrity, is more than words — it is the standard we hold
                 for every pupil and every member of staff. We invite you to join our school family
                 and see the difference that genuine care and committed teaching can make."
               </p>
@@ -242,7 +242,7 @@ export default function About() {
               { year: "2024", title: "94% BECE Pass Rate", text: "Outstanding performance placing students in top senior high schools.", image: IMAGES.achieve_bece },
               { year: "2024", title: "District Quiz Champions", text: "Winners of the Tema District inter-school general knowledge quiz.", image: IMAGES.achieve_quiz },
               { year: "2023", title: "Best Kept School Award", text: "Recognised for our clean, well-maintained campus.", image: IMAGES.achieve_award },
-              { year: "2025", title: "21 Years of Excellence", text: "Two decades of Hardwork and Integrity — proudly serving the Lashibi community since 2004.", image: IMAGES.achieve_years },
+              { year: "2025", title: "21 Years of Excellence", text: "Two decades of Hard Work and Integrity — proudly serving the Lashibi community since 2004.", image: IMAGES.achieve_years },
             ].map((a, i) => (
               <motion.div
                 key={i}

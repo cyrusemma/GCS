@@ -47,6 +47,10 @@ export default function Portal() {
               fees, and stay up to date with the latest school notifications — all in one secure
               place.
             </p>
+            <p className="mt-4 text-sm text-white/70">
+              Student and Parent portal access is currently being prepared. Staff accounts can
+              continue through the staff login.
+            </p>
           </div>
 
           {/* Right — login form */}
@@ -56,6 +60,8 @@ export default function Portal() {
                 <button
                   key={r}
                   onClick={() => setRole(r)}
+                  type="button"
+                  aria-pressed={role === r}
                   className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                     role === r ? "bg-crown-blue text-white" : "bg-crown-white dark:bg-slate-900 text-crown-blue dark:text-crown-gold-light hover:bg-crown-gold/20"
                   }`}
@@ -66,17 +72,18 @@ export default function Portal() {
             </div>
 
             {notice && (
-              <div className="mb-5 bg-crown-gold/15 border border-crown-gold/40 text-crown-blue-dark rounded-lg px-4 py-3 text-sm">
+              <div role="status" className="mb-5 bg-crown-gold/15 border border-crown-gold/40 text-crown-blue-dark rounded-lg px-4 py-3 text-sm">
                 {notice}
               </div>
             )}
 
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label className="text-sm font-medium text-gray-700 dark:text-slate-300">
+                <label htmlFor="portal-identifier" className="text-sm font-medium text-gray-700 dark:text-slate-300">
                   {role === "Parent" ? "Email / Parent ID" : role === "Staff" ? "Staff Email" : "Student ID / Email"}
                 </label>
                 <input
+                  id="portal-identifier"
                   type="text"
                   required
                   placeholder="Enter your ID or email"
@@ -84,9 +91,10 @@ export default function Portal() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700 dark:text-slate-300">Password</label>
+                <label htmlFor="portal-password" className="text-sm font-medium text-gray-700 dark:text-slate-300">Password</label>
                 <div className="mt-1 relative">
                   <input
+                    id="portal-password"
                     type={showPw ? "text" : "password"}
                     required
                     placeholder="Enter your password"
@@ -105,16 +113,22 @@ export default function Portal() {
 
               <div className="flex items-center justify-between text-sm">
                 <label className="flex items-center gap-2 text-gray-600 dark:text-slate-300">
-                  <input type="checkbox" /> Remember me
+                  <input id="remember-me" type="checkbox" /> Remember me
                 </label>
-                <a href="#" className="text-crown-blue dark:text-crown-gold-light hover:text-crown-gold">Forgot Password?</a>
+                <button
+                  type="button"
+                  onClick={() => setNotice("Password recovery will be available when the online portal launches.")}
+                  className="text-crown-blue dark:text-crown-gold-light hover:text-crown-gold"
+                >
+                  Forgot Password?
+                </button>
               </div>
 
               <button
                 type="submit"
                 className="w-full bg-crown-gold hover:bg-crown-gold-light text-crown-blue-dark font-semibold py-3 rounded-full transition-colors"
               >
-                Login
+                {role === "Staff" ? "Login" : "Check Portal Availability"}
               </button>
 
               <p className="text-center text-sm text-gray-600 dark:text-slate-300">

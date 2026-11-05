@@ -24,7 +24,7 @@ export const translations = {
       learnMore: "Learn More",
     },
     footer: {
-      tagline: "Hardwork and Integrity",
+      tagline: "Hard Work and Integrity",
       quickLinks: "Quick Links",
       downloads: "Downloads",
       term: "Academic Term",

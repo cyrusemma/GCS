@@ -2,7 +2,7 @@ import { IMAGES } from "./images"
 
 export const schoolInfo = {
   name: "Golden Crown School",
-  tagline: "Hardwork and Integrity",
+  tagline: "Hard Work and Integrity",
   established: 2004,
   location: "Lashibi, Tema Metropolitan, Greater Accra Region, Ghana",
   address: "MXM6+VVC, Lashibi, Greater Accra, Ghana",
@@ -16,7 +16,7 @@ export const schoolInfo = {
   mission:
     "To empower learners with knowledge, skills, and values through quality education, discipline, and teamwork, enabling them to excel academically and socially in a rapidly changing world.",
   facilities: ["Library", "Computing Laboratory", "State-of-the-art Classroom Facilities"],
-  values: ["Hardwork", "Integrity", "Discipline", "Excellence", "Respect"],
+  values: ["Hard Work", "Integrity", "Discipline", "Excellence", "Respect"],
 }
 
 export const divisions = [

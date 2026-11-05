@@ -116,7 +116,7 @@ export default function Footer() {
           {/* Column 3 — term + social + newsletter */}
           <div>
             <h4 className="font-poppins font-semibold text-crown-gold mb-4">{t("footer.term")}</h4>
-            <p className="text-sm text-white/80 mb-1">Third Term — 2024/2025</p>
+            <p className="text-sm text-white/80 mb-1">2025/2026 Academic Year</p>
             <p className="text-sm text-white/80 mb-5">School Hours: Mon–Fri, 7:00am – 5:00pm</p>
 
             <div className="mb-6">
@@ -163,7 +163,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/70">
-          <p>© 2025 Golden Crown School, Lashibi. {t("footer.rights")}</p>
+          <p>© 2026 Golden Crown School, Lashibi. {t("footer.rights")}</p>
           <p className="text-crown-gold">www.goldencrownschool.org</p>
         </div>
       </div>

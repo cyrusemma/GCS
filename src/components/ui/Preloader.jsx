@@ -8,11 +8,17 @@ export default function Preloader() {
   const [done, setDone] = useState(false)
 
   useEffect(() => {
+    if (sessionStorage.getItem("golden-crown-preloader-seen")) {
+      setDone(true)
+      return
+    }
+
     document.body.style.overflow = "hidden"
     const timer = setTimeout(() => {
+      sessionStorage.setItem("golden-crown-preloader-seen", "true")
       setDone(true)
       document.body.style.overflow = ""
-    }, 2400)
+    }, 1800)
     return () => {
       clearTimeout(timer)
       document.body.style.overflow = ""
@@ -83,7 +89,7 @@ export default function Preloader() {
             transition={{ duration: 0.6, delay: 1.9 }}
             className="mt-1 text-crown-gold text-sm"
           >
-            Hardwork and Integrity
+            Hard Work and Integrity
           </motion.span>
         </motion.div>
       )}

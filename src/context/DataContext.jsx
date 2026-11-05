@@ -13,7 +13,7 @@ const defaultSchoolInfo = {
   becePassRate: "94%",
   studentsEnrolled: "450+",
   yearsOfExcellence: "21+",
-  motto: "Hardwork and Integrity",
+  motto: "Hard Work and Integrity",
 }
 
 const defaultData = {

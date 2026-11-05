@@ -10,7 +10,7 @@ export const news = [
     excerpt:
       "The school marked 21 years of excellence with a colorful celebration attended by staff, students, parents, and distinguished guests...",
     body:
-      "Golden Crown School, Lashibi, marked 21 years of dedicated service to basic education with a vibrant anniversary celebration on our campus. Since our founding in 2004, we have remained guided by our motto, 'Hardwork and Integrity.' The day featured cultural performances by our pupils, a keynote address from the headteacher, and the recognition of long-serving staff. Parents, alumni, and community leaders joined the festivities, reaffirming the strong family spirit that defines our school. As we look ahead, we renew our commitment to nurturing confident, disciplined, and academically excellent young Ghanaians.",
+      "Golden Crown School, Lashibi, marked 21 years of dedicated service to basic education with a vibrant anniversary celebration on our campus. Since our founding in 2004, we have remained guided by our motto, 'Hard Work and Integrity.' The day featured cultural performances by our pupils, a keynote address from the headteacher, and the recognition of long-serving staff. Parents, alumni, and community leaders joined the festivities, reaffirming the strong family spirit that defines our school. As we look ahead, we renew our commitment to nurturing confident, disciplined, and academically excellent young Ghanaians.",
   },
   {
     id: 2,

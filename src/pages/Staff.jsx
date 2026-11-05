@@ -50,7 +50,7 @@ export default function Staff() {
           <span className="inline-block h-1 w-12 rounded-full bg-crown-gold mb-4" />
           <h2 className="font-poppins font-bold text-3xl text-white mb-3">Join Our Team</h2>
           <p className="text-white/85 mb-7">
-            Are you a passionate, qualified teacher who shares our values of Hardwork and Integrity?
+            Are you a passionate, qualified teacher who shares our values of Hard Work and Integrity?
             We'd love to hear from you. Send your CV and we'll be in touch.
           </p>
           <a

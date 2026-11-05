@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react"
 import { ASSETS, onImgError } from "../../data/images"
 import { useI18n } from "../../context/I18nContext"
 
-const MOTTO = "Hardwork and Integrity"
+const MOTTO = "Hard Work and Integrity"
 
 // Optional looping campus video — drop a file at /public/assets/campus.mp4
 // and it will be used automatically; otherwise the building photo shows.

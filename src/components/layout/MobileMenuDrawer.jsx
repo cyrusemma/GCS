@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { NavLink, Link } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import {
@@ -41,18 +41,56 @@ const mobileNavLinks = [
 export default function MobileMenuDrawer({ isOpen, onClose }) {
   const { theme, toggleTheme } = useTheme()
   const { t } = useI18n()
+  const drawerRef = useRef(null)
+  const closeButtonRef = useRef(null)
+  const previousFocusRef = useRef(null)
 
   // Prevent background scrolling when menu is open
   useEffect(() => {
     if (isOpen) {
+      previousFocusRef.current = document.activeElement
       document.body.style.overflow = "hidden"
+      closeButtonRef.current?.focus()
     } else {
       document.body.style.overflow = ""
+      if (previousFocusRef.current instanceof HTMLElement) {
+        previousFocusRef.current.focus()
+      }
     }
     return () => {
       document.body.style.overflow = ""
     }
   }, [isOpen])
+
+  useEffect(() => {
+    if (!isOpen) return undefined
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose()
+        return
+      }
+
+      if (event.key !== "Tab" || !drawerRef.current) return
+      const focusable = drawerRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
+      )
+      if (!focusable.length) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [isOpen, onClose])
 
   // Animation variants
   const backdropVariants = {
@@ -123,11 +161,15 @@ export default function MobileMenuDrawer({ isOpen, onClose }) {
 
           {/* Off-canvas Slide Panel */}
           <motion.div
+            ref={drawerRef}
             variants={drawerVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
             className="absolute top-0 right-0 bottom-0 w-full max-w-sm sm:max-w-md bg-white dark:bg-[#0c1427] text-gray-900 dark:text-white shadow-2xl flex flex-col h-full border-l border-gray-200/80 dark:border-slate-800/80 overflow-hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
           >
             {/* Background Watermark Accent */}
             <img
@@ -151,12 +193,13 @@ export default function MobileMenuDrawer({ isOpen, onClose }) {
                     Golden Crown
                   </h3>
                   <span className="text-[11px] font-medium text-crown-gold tracking-wide block">
-                    Hardwork & Integrity
+                    Hard Work & Integrity
                   </span>
                 </div>
               </Link>
 
               <button
+                ref={closeButtonRef}
                 onClick={onClose}
                 aria-label="Close navigation menu"
                 className="h-10 w-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-200 hover:bg-crown-gold/20 hover:text-crown-blue dark:hover:text-crown-gold transition-colors"
@@ -212,7 +255,7 @@ export default function MobileMenuDrawer({ isOpen, onClose }) {
                                 <Icon size={16} />
                               </div>
 
-                              <span className="text-sm font-medium">
+                              <span className="text-base font-medium">
                                 {t(`nav.${link.key}`) || link.label}
                               </span>
                             </div>
