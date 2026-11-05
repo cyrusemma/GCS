@@ -25,13 +25,12 @@ export default function AdmissionCTA() {
             >
               <FileText size={18} /> Apply Online
             </Link>
-            <a
-              href="#"
-              download
+            <Link
+              to="/admissions"
               className="inline-flex items-center justify-center gap-2 bg-white hover:bg-crown-white text-crown-blue font-semibold px-8 py-3 rounded-full shadow-lg transition-colors"
             >
-              <Download size={18} /> Download Prospectus
-            </a>
+              <Download size={18} /> View Admissions Guide
+            </Link>
           </div>
         </motion.div>
       </div>

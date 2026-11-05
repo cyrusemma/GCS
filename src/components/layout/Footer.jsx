@@ -16,20 +16,27 @@ const quickLinks = [
   { to: "/contact", label: "Contact" },
 ]
 
-const downloads = ["Admission Form", "Fee Structure", "School Handbook"]
+const downloads = [
+  { label: "Admission Form", to: "/admissions#application-form" },
+  { label: "Fee Structure", to: "/admissions#fees-section" },
+  { label: "School Handbook", to: "/parents#handbook" },
+]
 
 export default function Footer() {
   const [email, setEmail] = useState("")
-  const [subscribed, setSubscribed] = useState(false)
+  const [newsletterRequested, setNewsletterRequested] = useState(false)
   const { t } = useI18n()
   const { schoolInfo } = useData()
 
   const handleSubscribe = (e) => {
     e.preventDefault()
-    if (email.trim()) {
-      setSubscribed(true)
-      setEmail("")
-    }
+    const address = email.trim()
+    if (!address) return
+
+    const subject = encodeURIComponent("Golden Crown School newsletter subscription")
+    const body = encodeURIComponent(`Please add ${address} to the Golden Crown School newsletter.`)
+    window.location.href = `mailto:${schoolInfo?.email || "info@goldencrownschool.org"}?subject=${subject}&body=${body}`
+    setNewsletterRequested(true)
   }
 
   return (
@@ -104,9 +111,7 @@ export default function Footer() {
               <ul className="space-y-2 text-sm text-white/80">
                 {downloads.map((d) => (
                   <li key={d}>
-                    <a href="#" download className="hover:text-white transition-colors">
-                      {d}
-                    </a>
+                    <Link to={d.to} className="hover:text-white transition-colors">{d.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -136,8 +141,14 @@ export default function Footer() {
             </div>
 
             <h4 className="font-poppins font-semibold text-crown-gold mb-3">{t("footer.newsletter")}</h4>
-            {subscribed ? (
-              <p className="text-sm text-crown-gold-light">Thank you for subscribing!</p>
+            {newsletterRequested ? (
+              <p role="status" className="text-sm text-crown-gold-light">
+                Your email app should open to request subscription. If it does not, email{" "}
+                <a className="underline" href={`mailto:${schoolInfo?.email || "info@goldencrownschool.org"}`}>
+                  {schoolInfo?.email || "info@goldencrownschool.org"}
+                </a>
+                .
+              </p>
             ) : (
               <form onSubmit={handleSubscribe} className="flex">
                 <input

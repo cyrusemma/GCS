@@ -8,9 +8,9 @@ import SEO from "../components/ui/SEO"
 import { IMAGES, onImgError } from "../data/images"
 
 const downloads = [
-  "Admission Form",
-  "Fee Structure",
-  "School Handbook",
+  { label: "Admission Form", to: "/admissions#application-form" },
+  { label: "Fee Structure", to: "/admissions#fees-section" },
+  { label: "School Handbook", to: "#handbook" },
 ]
 
 const resources = [
@@ -50,20 +50,19 @@ export default function Parents() {
               Go to Portal <LogIn size={18} />
             </Link>
           </div>
-          <div className="bg-crown-gold/10 border border-crown-gold/40 rounded-2xl p-8 flex flex-col">
+          <div id="handbook" className="bg-crown-gold/10 border border-crown-gold/40 rounded-2xl p-8 flex flex-col scroll-mt-24">
             <FileText className="text-crown-blue dark:text-crown-gold-light mb-4" size={36} />
             <h3 className="font-poppins font-bold text-2xl text-crown-blue dark:text-crown-gold-light mb-2">Student Handbook</h3>
             <p className="text-gray-600 dark:text-slate-300 text-sm mb-6 flex-1">
               Our handbook covers school rules, the code of conduct, uniform policy, and everything
               parents and pupils need to know.
             </p>
-            <a
-              href="#"
-              download
+            <Link
+              to="/parents#handbook"
               className="inline-flex items-center gap-2 bg-crown-blue hover:bg-crown-blue-light text-white font-semibold px-6 py-3 rounded-full transition-colors self-start"
             >
-              <Download size={18} /> Download Student Handbook (PDF)
-            </a>
+              <Download size={18} /> View Student Handbook
+            </Link>
           </div>
         </div>
       </section>
@@ -127,17 +126,16 @@ export default function Parents() {
           <SectionTitle title="Downloads" subtitle="Key documents, ready when you need them." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {downloads.map((d) => (
-              <a
-                key={d}
-                href="#"
-                download
+              <Link
+                key={d.label}
+                to={d.to}
                 className="flex items-center gap-4 bg-crown-white dark:bg-slate-900 rounded-xl p-5 border border-gray-100 dark:border-slate-700 hover:border-crown-gold transition-colors"
               >
                 <div className="h-11 w-11 shrink-0 rounded-full bg-crown-blue text-white flex items-center justify-center">
                   <Download size={20} />
                 </div>
-                <span className="font-medium text-crown-blue dark:text-crown-gold-light">{d}</span>
-              </a>
+                <span className="font-medium text-crown-blue dark:text-crown-gold-light">{d.label}</span>
+              </Link>
             ))}
           </div>
         </div>
